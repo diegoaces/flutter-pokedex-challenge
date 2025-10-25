@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/colors.dart';
 
-class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingPageState extends State<OnboardingPage> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   List<String> onboardingSteps = [
     'assets/png/onboarding.png',
     'assets/png/onboarding2.png',
