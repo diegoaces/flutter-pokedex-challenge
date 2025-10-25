@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/colors.dart';
+import 'package:poke_app/core/constants.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -11,8 +12,8 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   List<String> onboardingSteps = [
-    'assets/png/onboarding.png',
-    'assets/png/onboarding2.png',
+    AppConstants.onboardingImage1,
+    AppConstants.onboardingImage2,
   ];
   int currentStep = 0;
 
@@ -26,38 +27,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(AppConstants.defaultPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               AnimatedCrossFade(
                 firstCurve: Curves.easeInOut,
                 secondCurve: Curves.easeInOut,
-                duration: const Duration(milliseconds: 500),
+                duration: AppConstants.longAnimationDuration,
                 crossFadeState: currentStep == 0
                     ? CrossFadeState.showFirst
                     : CrossFadeState.showSecond,
                 firstChild: Image.asset(
                   onboardingSteps[0],
-                  width: 342,
-                  height: 265,
+                  width: AppConstants.imageWidth,
+                  height: AppConstants.imageHeight,
                 ),
                 secondChild: Image.asset(
                   onboardingSteps[1],
-                  width: 342,
-                  height: 265,
+                  width: AppConstants.imageWidth,
+                  height: AppConstants.imageHeight,
                 ),
               ),
 
               const SizedBox(height: 20),
               AnimatedCrossFade(
-                duration: const Duration(milliseconds: 300),
+                duration: AppConstants.animationDuration,
                 firstChild: Text(
                   titles[0],
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'Poppins',
+                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -65,9 +66,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 secondChild: Text(
                   titles[currentStep],
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'Poppins',
+                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -80,9 +81,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Text(
                 subtitles[currentStep],
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppConstants.subtitleFontSize,
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'Poppins',
+                  fontFamily: AppConstants.fontFamily,
                   color: textSecondary,
                 ),
                 textAlign: TextAlign.center,
@@ -92,22 +93,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AnimatedContainer(
-                    duration: const Duration(milliseconds: 500),
-                    width: (currentStep == 0) ? 28 : 9,
-                    height: 9,
+                    duration: AppConstants.longAnimationDuration,
+                    width: (currentStep == 0)
+                        ? AppConstants.indicatorWidth.toDouble()
+                        : AppConstants.indicatorWidthSmall.toDouble(),
+                    height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 0) ? azulNormal : azulSemiLight,
-                      borderRadius: BorderRadius.circular(11),
+                      borderRadius:
+                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: AppConstants.indicatorSpacing),
                   AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    width: (currentStep == 1) ? 28 : 9,
-                    height: 9,
+                    duration: AppConstants.animationDuration,
+                    width: (currentStep == 1)
+                        ? AppConstants.indicatorWidth.toDouble()
+                        : AppConstants.indicatorWidthSmall.toDouble(),
+                    height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 1) ? azulNormal : azulSemiLight,
-                      borderRadius: BorderRadius.circular(11),
+                      borderRadius:
+                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
                     ),
                   ),
                 ],
@@ -123,7 +130,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           vertical: 15,
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius:
+                              BorderRadius.circular(AppConstants.defaultBorderRadius),
                         ),
                         backgroundColor: primaryDefault,
                         elevation: 2,
@@ -139,23 +147,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         });
                       },
                       child: AnimatedCrossFade(
-                        duration: const Duration(milliseconds: 300),
+                        duration: AppConstants.animationDuration,
                         firstChild: Text(
                           buttonTexts[0],
-                          style: TextStyle(
-                            fontSize: 16,
+                          style: const TextStyle(
+                            fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins',
+                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         secondChild: Text(
                           buttonTexts[1],
-                          style: TextStyle(
-                            fontSize: 16,
+                          style: const TextStyle(
+                            fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins',
+                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         crossFadeState: currentStep == 0
