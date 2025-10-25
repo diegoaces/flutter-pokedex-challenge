@@ -31,22 +31,20 @@ class _PokeballLoadingState extends State<PokeballLoading>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (BuildContext context, Widget? child) {
-          return Transform.rotate(
-            angle: _controller.value * 2 * math.pi,
-            child: child,
-          );
-        },
-        child: Transform.rotate(
-          angle: math.pi / 2, // 90 degrees
-          child: SvgPicture.asset(
-            'assets/svg/pokeball.svg',
-            width: 155,
-            height: 155,
-          ),
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (BuildContext context, Widget? child) {
+        return Transform.rotate(
+          angle: _controller.value * 2 * math.pi,
+          child: child,
+        );
+      },
+      child: Transform.rotate(
+        angle: math.pi / 2, // 90 degrees
+        child: SvgPicture.asset(
+          'assets/svg/pokeball.svg',
+          width: 155,
+          height: 155,
         ),
       ),
     );
