@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/app_router.dart';
-import 'package:poke_app/pages/onboarding_page.dart';
-import 'package:poke_app/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
