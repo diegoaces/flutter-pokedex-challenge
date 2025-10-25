@@ -1,0 +1,31 @@
+{
+  "@@locale": "es",
+  "appTitle": "PokeApp",
+  "@appTitle": {
+    "description": "El título de la aplicación"
+  },
+  "onboardingTitle1": "Todos los Pokémon en \n un solo lugar",
+  "@onboardingTitle1": {
+    "description": "Título del primer paso del onboarding"
+  },
+  "onboardingTitle2": "Mantén tu Pokédex \n actualizada",
+  "@onboardingTitle2": {
+    "description": "Título del segundo paso del onboarding"
+  },
+  "onboardingSubtitle1": "Accede a una amplia lista de Pokémon de \n todas las generaciones creadas por \n Nintendo",
+  "@onboardingSubtitle1": {
+    "description": "Subtítulo del primer paso del onboarding"
+  },
+  "onboardingSubtitle2": "Registrate y guarda tu perfil, Pokémon \n favoritos, configuraciones y mucho más en la \n aplicación",
+  "@onboardingSubtitle2": {
+    "description": "Subtítulo del segundo paso del onboarding"
+  },
+  "continueButton": "Continuar",
+  "@continueButton": {
+    "description": "Texto del botón continuar"
+  },
+  "letsStartButton": "Empecemos",
+  "@letsStartButton": {
+    "description": "Texto del botón empecemos"
+  }
+}

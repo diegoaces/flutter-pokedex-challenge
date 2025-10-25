@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/colors.dart';
+import 'package:poke_app/l10n/app_localizations.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -13,19 +14,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     'assets/png/onboarding.png',
     'assets/png/onboarding2.png',
   ];
-  List<String> titles = [
-    'Todos los Pokémon en \n un solo lugar',
-    'Mantén tu Pokédex \n actualizada',
-  ];
-  List<String> subtitles = [
-    'Accede a una amplia lista de Pokémon de \n todas las generaciones creadas por \n Nintendo',
-    'Registrate y guarda tu perfil, Pokémon \n favoritos, configuraciones y mucho más en la \n aplicación',
-  ];
-  List<String> buttonTexts = ['Continuar', 'Empecemos'];
   int currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final titles = [l10n.onboardingTitle1, l10n.onboardingTitle2];
+    final subtitles = [l10n.onboardingSubtitle1, l10n.onboardingSubtitle2];
+    final buttonTexts = [l10n.continueButton, l10n.letsStartButton];
+
     return Scaffold(
       body: SafeArea(
         child: Padding(

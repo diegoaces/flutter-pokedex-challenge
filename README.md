@@ -1,120 +1,149 @@
 # PokeApp
 
-A Flutter application featuring a Pokemon-themed onboarding experience with custom animated SVG components and splash screen animations.
+Una aplicación Flutter con experiencia de onboarding temática de Pokemon, componentes SVG animados personalizados y navegación fluida.
 
-## Overview
+## Descripción
 
-PokeApp is a mobile application built with Flutter 3.32.4 that showcases:
-- Pokemon-themed onboarding experience
-- Custom animated pokeball loading animations
-- Splash screen with smooth transitions
-- Modular widget architecture
-- SVG animation system
+PokeApp es una aplicación móvil construida con Flutter 3.32.4 que incluye:
+- Experiencia de onboarding temática de Pokemon
+- Animaciones personalizadas de pokeball en SVG
+- Splash screen con transiciones suaves
+- Sistema de navegación con GoRouter
+- Arquitectura modular de widgets
+- Native splash screen configurado
 
-## Prerequisites
+## Requisitos Previos
 
-- [FVM (Flutter Version Manager)](https://fvm.app/) - Required for version management
-- Flutter 3.32.4 (managed via FVM)
+- [FVM (Flutter Version Manager)](https://fvm.app/) - Requerido para gestión de versiones
+- Flutter 3.32.4 (gestionado vía FVM)
 - Dart SDK ^3.8.1
 
-## Getting Started
+## Instalación
 
-### 1. Install FVM
+### 1. Instalar FVM
 
-If you don't have FVM installed:
+Si no tienes FVM instalado:
 
 ```bash
 dart pub global activate fvm
 ```
 
-### 2. Install Flutter Version
+### 2. Instalar la Versión de Flutter
 
 ```bash
 fvm install 3.32.4
 ```
 
-### 3. Install Dependencies
+### 3. Instalar Dependencias
 
 ```bash
 fvm flutter pub get
 ```
 
-### 4. Run the Application
+### 4. Generar Native Splash Screen
 
 ```bash
-# Run on default device
-fvm flutter run
-
-# List available devices
-fvm flutter devices
-
-# Run on specific device
-fvm flutter run -d <device_id>
+fvm flutter pub run flutter_native_splash:create
 ```
 
-## Project Structure
+### 5. Ejecutar la Aplicación
+
+```bash
+# Ejecutar en dispositivo por defecto
+fvm flutter run
+
+# Listar dispositivos disponibles
+fvm flutter devices
+
+# Ejecutar en dispositivo específico
+fvm flutter run -d <device_id>
+
+# Ejecutar en modo release
+fvm flutter run --release
+```
+
+## Estructura del Proyecto
 
 ```
 lib/
-├── main.dart                           # Application entry point
+├── main.dart                           # Punto de entrada de la aplicación
+├── app_router.dart                     # Configuración de rutas con GoRouter
+├── colors.dart                         # Paleta de colores de la app
 ├── pages/
-│   ├── onboarding_page.dart           # Pokemon onboarding screen
-│   └── splash_page.dart               # Splash screen with animations
+│   ├── splash_screen.dart             # Pantalla de splash inicial
+│   └── onboarding_page.dart           # Pantalla de onboarding Pokemon
 ├── widgets/
-│   └── pokeball_loading.dart         # Custom pokeball loading widget
+│   └── pokeball_loading.dart          # Widget de carga con animación pokeball
 └── exts/
-    ├── animated_svg.dart              # Animated SVG widget
-    └── animated_svg_controller.dart   # SVG animation controller
+    ├── animated_svg.dart               # Widget SVG animado personalizado
+    └── animated_svg_controller.dart    # Controlador para animaciones SVG
 
 assets/
 ├── svg/
-│   ├── pokeball.svg                   # Main pokeball asset
-│   ├── pokeball1.svg                  # Animation variant 1
-│   └── pokeball2.svg                  # Animation variant 2
+│   ├── pokeball.svg                    # Asset principal pokeball
+│   ├── pokeball1.svg                   # Variante de animación 1
+│   └── pokeball2.svg                   # Variante de animación 2
 └── png/
-    └── onboarding.png                 # Onboarding image
+    ├── pokeball.png                    # Logo para native splash
+    ├── onboarding.png                  # Imagen de onboarding 1
+    └── onboarding2.png                 # Imagen de onboarding 2
 ```
 
-## Key Features
+## Características Principales
 
-### Custom SVG Animations
-The app includes a custom animated SVG system with controller support for smooth pokeball animations.
+### Sistema de Navegación con GoRouter
+- Navegación declarativa con `go_router` (^16.3.0)
+- Transiciones de página personalizadas con `FadeTransition`
+- Rutas definidas: `/splash` y `/onboarding`
+- Navegación fluida entre pantallas
 
-### Modular Architecture
-Widgets are organized into reusable components following Flutter best practices.
+### Animaciones SVG Personalizadas
+Sistema de animación SVG con soporte de controlador para animaciones suaves de pokeball con múltiples variantes.
 
-### Pokemon Theme
-Engaging onboarding experience with Pokemon-themed visuals and animations.
+### Native Splash Screen
+Configurado con `flutter_native_splash` para una experiencia de inicio nativa en Android e iOS.
 
-## Development
+### Arquitectura Modular
+Widgets organizados en componentes reutilizables siguiendo las mejores prácticas de Flutter.
 
-### Running Tests
+### Tema Pokemon
+Experiencia de onboarding atractiva con visuales y animaciones temáticas de Pokemon.
+
+## Desarrollo
+
+### Ejecutar Tests
 
 ```bash
-# Run all tests
+# Ejecutar todos los tests
 fvm flutter test
 
-# Run with coverage
+# Ejecutar un archivo de test específico
+fvm flutter test test/widget_test.dart
+
+# Ejecutar con cobertura
 fvm flutter test --coverage
 ```
 
-### Code Quality
+### Calidad de Código
 
 ```bash
-# Analyze code
+# Analizar código
 fvm flutter analyze
 
-# Format code
+# Formatear código
 fvm flutter format .
+
+# Formatear un archivo específico
+fvm flutter format lib/main.dart
 ```
 
-### Building
+### Construcción
 
 ```bash
 # Android APK
 fvm flutter build apk
 
-# Android App Bundle
+# Android App Bundle (recomendado para Play Store)
 fvm flutter build appbundle
 
 # iOS
@@ -122,53 +151,94 @@ fvm flutter build ios
 
 # Web
 fvm flutter build web
+
+# macOS
+fvm flutter build macos
 ```
 
-## Dependencies
+## Dependencias
 
-- **flutter_svg** (^2.2.1) - SVG rendering and animations
-- **cupertino_icons** (^1.0.8) - iOS-style icons
-- **flutter_lints** (^5.0.0) - Code quality and linting
+### Producción
+- **flutter_svg** (^2.2.1) - Renderizado y animaciones SVG
+- **go_router** (^16.3.0) - Navegación declarativa y routing
+- **flutter_native_splash** (^2.4.7) - Splash screen nativo
+- **cupertino_icons** (^1.0.8) - Iconos estilo iOS
 
-## Code Standards
+### Desarrollo
+- **flutter_lints** (^5.0.0) - Reglas de linting y calidad de código
 
-This project follows Flutter best practices enforced by `flutter_lints`. Key guidelines:
+## Estándares de Código
 
-- Use `const` constructors when possible
-- Prefer `StatelessWidget` for stateless components
-- Extract reusable widgets into separate files
-- Properly dispose of animation controllers
-- Add meaningful comments for complex logic
+Este proyecto sigue las mejores prácticas de Flutter aplicadas por `flutter_lints`. Directrices clave:
 
-## Troubleshooting
+- Usar constructores `const` cuando sea posible
+- Preferir `StatelessWidget` para componentes sin estado
+- Extraer widgets reutilizables en archivos separados
+- Disponer correctamente de los controladores de animación
+- Agregar comentarios significativos para lógica compleja
+- Seguir la convención de nomenclatura de Dart
 
-**FVM not found**
+## Navegación
+
+La aplicación utiliza GoRouter para gestión de rutas:
+
+```dart
+/splash      -> SplashScreen (ruta inicial)
+/onboarding  -> OnboardingScreen
+```
+
+Todas las transiciones de página utilizan `FadeTransition` para una experiencia fluida.
+
+## Solución de Problemas
+
+### FVM no encontrado
 ```bash
 dart pub global activate fvm
 ```
 
-**Wrong Flutter version**
+### Versión incorrecta de Flutter
 ```bash
 fvm install 3.32.4
 fvm use 3.32.4
 ```
 
-**Missing dependencies**
+### Dependencias faltantes
 ```bash
 fvm flutter pub get
 ```
 
-**SVG not rendering**
-- Verify asset path in `pubspec.yaml`
-- Ensure SVG file exists in `assets/svg/`
-- Run `fvm flutter pub get` after adding assets
+### SVG no se renderiza
+- Verificar ruta del asset en `pubspec.yaml`
+- Asegurar que el archivo SVG existe en `assets/svg/`
+- Ejecutar `fvm flutter pub get` después de agregar assets
 
-## Resources
+### Splash screen no aparece
+```bash
+fvm flutter pub run flutter_native_splash:create
+```
 
-- [Flutter Documentation](https://docs.flutter.dev/)
-- [FVM Documentation](https://fvm.app/)
+### Errores de compilación
+```bash
+# Limpiar y reconstruir
+fvm flutter clean
+fvm flutter pub get
+fvm flutter run
+```
+
+## Recursos
+
+- [Documentación de Flutter](https://docs.flutter.dev/)
+- [Documentación de FVM](https://fvm.app/)
+- [GoRouter Package](https://pub.dev/packages/go_router)
 - [Flutter SVG Package](https://pub.dev/packages/flutter_svg)
+- [Flutter Native Splash](https://pub.dev/packages/flutter_native_splash)
 
-## License
+## Versión
 
-This project is part of a technical assessment for Global66.
+- **Versión de la App**: 1.0.0+1
+- **Flutter**: 3.32.4
+- **Dart SDK**: ^3.8.1
+
+## Licencia
+
+Este proyecto es parte de una evaluación técnica para Global66.
