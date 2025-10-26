@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:poke_app/pages/onboarding_page.dart';
+import 'package:poke_app/pages/home_screen.dart';
+import 'package:poke_app/pages/onboarding_screen.dart';
 import 'package:poke_app/pages/splash_screen.dart';
 import 'package:poke_app/providers/app_startup_provider.dart';
 
@@ -11,6 +12,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       _fadeRoute(path: '/splash', child: const SplashScreen()),
       _fadeRoute(path: '/onboarding', child: const OnboardingScreen()),
+      _fadeRoute(path: '/home', child: const HomeScreen()),
     ],
     redirect: (context, state) {
       final appStartupState = ref.watch(appStartupProvider);

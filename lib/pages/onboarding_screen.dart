@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/core/constants.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
@@ -100,8 +101,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 0) ? azulNormal : azulSemiLight,
-                      borderRadius:
-                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.indicatorBorderRadius,
+                      ),
                     ),
                   ),
                   const SizedBox(width: AppConstants.indicatorSpacing),
@@ -113,8 +115,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 1) ? azulNormal : azulSemiLight,
-                      borderRadius:
-                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.indicatorBorderRadius,
+                      ),
                     ),
                   ),
                 ],
@@ -130,8 +133,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           vertical: 15,
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(AppConstants.defaultBorderRadius),
+                          borderRadius: BorderRadius.circular(
+                            AppConstants.defaultBorderRadius,
+                          ),
                         ),
                         backgroundColor: primaryDefault,
                         elevation: 2,
@@ -142,7 +146,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           if (currentStep < onboardingSteps.length - 1) {
                             currentStep++;
                           } else {
-                            currentStep = 0;
+                            // Final step action
+                            // For example, navigate to home screen with goRouter
+                            context.go('/home');
                           }
                         });
                       },
