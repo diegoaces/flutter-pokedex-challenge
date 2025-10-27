@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
 import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/pages/pokemon_list_tile.dart';
+import 'package:poke_app/widgets/pokemon_list_tile.dart';
 import 'package:poke_app/widgets/filter_preferences_modal.dart';
 
 class PokedexWidget extends StatefulWidget {

@@ -21,6 +21,11 @@ Pokedex App es una aplicación móvil construida con Flutter 3.32.4 que incluye:
 - Native splash screen configurado
 - Theme centralizado con Google Fonts
 
+## IA utilizada
+
+- **Claude AI** - Para asistencia en redacción y generación de contenido del README.md y documentación técnica.
+- **Copilot** - Para sugerencias de código y optimizaciones durante el desarrollo de la aplicación.
+
 ## Requisitos Previos
 
 - [FVM (Flutter Version Manager)](https://fvm.app/) - Requerido para gestión de versiones

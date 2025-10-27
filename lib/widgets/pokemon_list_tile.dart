@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/app_routes.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/pages/element_chip.dart';
+import 'package:poke_app/widgets/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 
 class PokemonListTile extends ConsumerStatefulWidget {

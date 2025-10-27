@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/circle_clipper.dart';
-import 'package:poke_app/pages/element_chip.dart';
-import 'package:poke_app/pages/measurement_card.dart';
+import 'package:poke_app/widgets/element_chip.dart';
+import 'package:poke_app/widgets/measurement_card.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 
