@@ -9,7 +9,7 @@ import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 
-class PokemonListTile extends ConsumerWidget {
+class PokemonListTile extends ConsumerStatefulWidget {
   const PokemonListTile({
     super.key,
     required this.pokemon,
@@ -20,12 +20,46 @@ class PokemonListTile extends ConsumerWidget {
   final bool showSlidable;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isFavorite = ref.watch(isFavoriteProvider(pokemon.id));
+  ConsumerState<PokemonListTile> createState() => _PokemonListTileState();
+}
+
+class _PokemonListTileState extends ConsumerState<PokemonListTile>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.3).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _onFavoriteTap() {
+    _animationController.forward().then((_) {
+      _animationController.reverse();
+    });
+    ref.read(favoritesProvider.notifier).toggleFavorite(widget.pokemon);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isFavorite = ref.watch(isFavoriteProvider(widget.pokemon.id));
 
     final tile = GestureDetector(
       onTap: () {
-        context.push(AppRoutes.pokemonDetailPath(pokemon.id), extra: pokemon);
+        context.push(AppRoutes.pokemonDetailPath(widget.pokemon.id), extra: widget.pokemon);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -43,14 +77,14 @@ class PokemonListTile extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "N°00${pokemon.id}",
+                      "N°00${widget.pokemon.id}",
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
-                      pokemon.nameCapitalizedFirstLetter(),
+                      widget.pokemon.nameCapitalizedFirstLetter(),
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -115,29 +149,28 @@ class PokemonListTile extends ConsumerWidget {
                     top: 8,
                     right: 8,
                     child: GestureDetector(
-                      onTap: () {
-                        ref
-                            .read(favoritesProvider.notifier)
-                            .toggleFavorite(pokemon);
-                      },
-                      child: Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: isFavorite ? Colors.red : Colors.grey,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 3),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SvgPicture.asset(
-                            isFavorite
-                                ? 'assets/svg/fav_solid.svg'
-                                : 'assets/svg/fav.svg',
-                            fit: BoxFit.contain,
-                            colorFilter: const ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
+                      onTap: _onFavoriteTap,
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            color: isFavorite ? Colors.red : Colors.grey,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SvgPicture.asset(
+                              isFavorite
+                                  ? 'assets/svg/fav_solid.svg'
+                                  : 'assets/svg/fav.svg',
+                              fit: BoxFit.contain,
+                              colorFilter: const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ),
                         ),
@@ -147,7 +180,7 @@ class PokemonListTile extends ConsumerWidget {
 
                   Center(
                     child: Image.network(
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png',
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${widget.pokemon.id}.png',
                       height: 100,
                       width: 100,
                       errorBuilder: (context, error, stackTrace) =>
@@ -170,23 +203,23 @@ class PokemonListTile extends ConsumerWidget {
       ),
     );
 
-    if (!showSlidable) {
+    if (!widget.showSlidable) {
       return tile;
     }
 
     return Slidable(
-      key: ValueKey(pokemon.id),
+      key: ValueKey(widget.pokemon.id),
       endActionPane: ActionPane(
         motion: const ScrollMotion(),
         dismissible: DismissiblePane(
           onDismissed: () {
-            ref.read(favoritesProvider.notifier).removeFavorite(pokemon.id);
+            ref.read(favoritesProvider.notifier).removeFavorite(widget.pokemon.id);
           },
         ),
         children: [
           SlidableAction(
             onPressed: (context) {
-              ref.read(favoritesProvider.notifier).removeFavorite(pokemon.id);
+              ref.read(favoritesProvider.notifier).removeFavorite(widget.pokemon.id);
             },
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,

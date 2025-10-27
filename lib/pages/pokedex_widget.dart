@@ -4,10 +4,52 @@ import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/pokemon_list_tile.dart';
 import 'package:poke_app/widgets/filter_preferences_modal.dart';
 
-class PokedexWidget extends StatelessWidget {
+class PokedexWidget extends StatefulWidget {
   const PokedexWidget({super.key, required this.pokemons});
 
   final List<Pokemon> pokemons;
+
+  @override
+  State<PokedexWidget> createState() => _PokedexWidgetState();
+}
+
+class _PokedexWidgetState extends State<PokedexWidget> {
+  final TextEditingController _searchController = TextEditingController();
+  List<Pokemon> _filteredPokemons = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredPokemons = widget.pokemons;
+  }
+
+  @override
+  void didUpdateWidget(PokedexWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.pokemons != widget.pokemons) {
+      _filterPokemons(_searchController.text);
+    }
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterPokemons(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredPokemons = widget.pokemons;
+      } else {
+        _filteredPokemons = widget.pokemons
+            .where((pokemon) =>
+                pokemon.name.toLowerCase().contains(query.toLowerCase()) ||
+                pokemon.id.toString().contains(query))
+            .toList();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +67,7 @@ class PokedexWidget extends StatelessWidget {
                     color: Colors.white,
                   ),
                   child: TextField(
+                    controller: _searchController,
                     decoration: InputDecoration(
                       hintText: 'Procurar Pokémon...',
                       hintStyle: TextStyle(
@@ -43,6 +86,15 @@ class PokedexWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+                      suffixIcon: _searchController.text.isNotEmpty
+                          ? IconButton(
+                              icon: Icon(Icons.clear, color: Colors.grey[400]),
+                              onPressed: () {
+                                _searchController.clear();
+                                _filterPokemons('');
+                              },
+                            )
+                          : null,
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 14,
@@ -50,7 +102,7 @@ class PokedexWidget extends StatelessWidget {
                       ),
                     ),
                     style: const TextStyle(color: Colors.black87, fontSize: 16),
-                    onChanged: (value) {},
+                    onChanged: _filterPokemons,
                   ),
                 ),
               ),
@@ -94,15 +146,45 @@ class PokedexWidget extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListView.separated(
-              itemCount: pokemons.length,
-              itemBuilder: (context, index) {
-                return PokemonListTile(pokemon: pokemons[index]);
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(height: 8);
-              },
-            ),
+            child: _filteredPokemons.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.search_off,
+                          size: 64,
+                          color: Colors.grey[400],
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No se encontraron Pokémon',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Intenta con otro nombre o número',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[500],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.separated(
+                    itemCount: _filteredPokemons.length,
+                    itemBuilder: (context, index) {
+                      return PokemonListTile(pokemon: _filteredPokemons[index]);
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(height: 8);
+                    },
+                  ),
           ),
         ),
       ],

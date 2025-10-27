@@ -1,18 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/element_chip.dart';
+import 'package:poke_app/providers/favorites_provider.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 
-class PokemonDetail extends StatelessWidget {
+class PokemonDetail extends ConsumerStatefulWidget {
   const PokemonDetail({super.key, required this.pokemon});
 
   final Pokemon pokemon;
 
   @override
+  ConsumerState<PokemonDetail> createState() => _PokemonDetailState();
+}
+
+class _PokemonDetailState extends ConsumerState<PokemonDetail>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.3).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _onFavoriteTap() {
+    _animationController.forward().then((_) {
+      _animationController.reverse();
+    });
+    ref.read(favoritesProvider.notifier).toggleFavorite(widget.pokemon);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final isFavorite = ref.watch(isFavoriteProvider(widget.pokemon.id));
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -70,7 +107,7 @@ class PokemonDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Image.network(
-                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png',
+                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${widget.pokemon.id}.png',
                           height: 200,
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
@@ -103,11 +140,18 @@ class PokemonDetail extends StatelessWidget {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.white,
-                                  size: 24,
+                                onTap: _onFavoriteTap,
+                                child: ScaleTransition(
+                                  scale: _scaleAnimation,
+                                  child: Icon(
+                                    isFavorite
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: isFavorite
+                                        ? Colors.redAccent
+                                        : Colors.white,
+                                    size: 24,
+                                  ),
                                 ),
                               ),
                             ],
@@ -124,7 +168,7 @@ class PokemonDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      pokemon.nameCapitalizedFirstLetter(),
+                      widget.pokemon.nameCapitalizedFirstLetter(),
                       style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -132,7 +176,7 @@ class PokemonDetail extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'N°${pokemon.idWithLeadingZeros()}',
+                      'N°${widget.pokemon.idWithLeadingZeros()}',
                       style: const TextStyle(fontSize: 20),
                     ),
                     Row(
