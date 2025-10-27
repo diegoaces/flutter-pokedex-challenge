@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poke_app/models/pokemon.dart';
@@ -6,9 +5,9 @@ import 'package:poke_app/pages/pokemon_list_tile.dart';
 import 'package:poke_app/widgets/filter_preferences_modal.dart';
 
 class PokedexWidget extends StatelessWidget {
-  const PokedexWidget({super.key, required this.data});
+  const PokedexWidget({super.key, required this.pokemons});
 
-  final Response? data;
+  final List<Pokemon> pokemons;
 
   @override
   Widget build(BuildContext context) {
@@ -94,14 +93,9 @@ class PokedexWidget extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: data?.data['results'].length ?? 0,
+            itemCount: pokemons.length,
             itemBuilder: (context, index) {
-              final pokemonData = data?.data['results'][index];
-              final pokemonId =
-                  int.parse(pokemonData['url'].toString().split('/')[6]);
-              final pokemonName = pokemonData['name'].toString();
-              final pokemon = Pokemon(id: pokemonId, name: pokemonName);
-              return PokemonListTile(pokemon: pokemon);
+              return PokemonListTile(pokemon: pokemons[index]);
             },
           ),
         ),
