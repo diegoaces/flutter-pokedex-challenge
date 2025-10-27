@@ -103,6 +103,11 @@ flutter:
     - assets/svg/grass.svg
     - assets/svg/poison.svg
     - assets/svg/water.svg
+    - assets/svg/fire.svg
+    - assets/svg/bug.svg
+    - assets/svg/flying.svg
+    - assets/svg/normal.svg
+
     # Pokemons
     - assets/svg/magikarp.svg
     - assets/png/magikarp.png

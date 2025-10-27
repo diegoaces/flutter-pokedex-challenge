@@ -55,6 +55,14 @@ class PokemonTypeHelper {
         return 'assets/svg/poison.svg';
       case 'water':
         return 'assets/svg/water.svg';
+      case 'fire':
+        return 'assets/svg/fire.svg';
+      case 'bug':
+        return 'assets/svg/bug.svg';
+      case 'flying':
+        return 'assets/svg/flying.svg';
+      case 'normal':
+        return 'assets/svg/normal.svg';
       default:
         return 'assets/svg/grass.svg';
     }
