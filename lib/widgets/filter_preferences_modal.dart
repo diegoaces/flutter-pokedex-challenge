@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/colors.dart';
+import 'package:poke_app/l10n/app_localizations.dart';
 import 'package:poke_app/widgets/custom_default_button.dart';
 
 /// Modal para filtrar preferencias de Pokémon por tipo.
@@ -61,6 +62,7 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -87,8 +89,8 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
                   ],
                 ),
                 const SizedBox(height: 14),
-                const Text(
-                  'Filtra por tus preferencias',
+                Text(
+                  l10n.filterByPreferences,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -113,8 +115,8 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Tipo',
+                      Text(
+                        l10n.type,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -199,7 +201,7 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
             child: Column(
               children: [
                 CustomDefaultButton(
-                  label: 'Aplicar',
+                  label: l10n.apply,
                   onPressed: () {
                     final selectedTypesList = selectedTypes.entries
                         .where((entry) => entry.value)
@@ -212,7 +214,7 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
                 ),
                 const SizedBox(height: 12),
                 CustomDefaultButton(
-                  label: 'Cancelar',
+                  label: l10n.cancel,
                   buttonColor: secondaryDefault,
                   textColor: Colors.black,
                   onPressed: () {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:poke_app/l10n/app_localizations.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/pokemon_list_tile.dart';
 import 'package:poke_app/widgets/filter_preferences_modal.dart';
@@ -76,6 +77,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       children: [
         Padding(
@@ -92,7 +94,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
                   child: TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      hintText: 'Procurar Pokémon...',
+                      hintText: l10n.searchPokemon,
                       hintStyle: TextStyle(
                         color: Colors.grey[400],
                         fontSize: 16,
@@ -173,7 +175,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Se han encontrado ${_filteredPokemons.length} resultados',
+                  l10n.resultsFound(_filteredPokemons.length),
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -187,8 +189,8 @@ class _PokedexWidgetState extends State<PokedexWidget> {
                     });
                     _applyFilters();
                   },
-                  child: const Text(
-                    'Borrar filtro',
+                  child: Text(
+                    l10n.clearFilter,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -215,7 +217,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'No se encontraron Pokémon',
+                          l10n.noResultsFound,
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[600],
@@ -224,7 +226,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Intenta con otro nombre o número',
+                          l10n.tryAnotherSearch,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey[500],

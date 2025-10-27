@@ -38,4 +38,47 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get favoritesEmptySubtitle =>
       'Haz clic en el ícono de corazón de tus \nPokémon favoritos y aparecerán aquí.';
+
+  @override
+  String get searchPokemon => 'Procurar Pokémon...';
+
+  @override
+  String get noResultsFound => 'No se encontraron Pokémon';
+
+  @override
+  String get tryAnotherSearch => 'Intenta con otro nombre o número';
+
+  @override
+  String resultsFound(int count) {
+    return 'Se han encontrado $count resultados';
+  }
+
+  @override
+  String get clearFilter => 'Borrar filtro';
+
+  @override
+  String get filterByPreferences => 'Filtra por tus preferencias';
+
+  @override
+  String get type => 'Tipo';
+
+  @override
+  String get apply => 'Aplicar';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get favorites => 'Favoritos';
+
+  @override
+  String get delete => 'Eliminar';
+
+  @override
+  String get confirmDelete => 'Confirmar eliminación';
+
+  @override
+  String confirmDeleteMessage(String name) {
+    return '¿Deseas eliminar a $name de tus favoritos?';
+  }
 }

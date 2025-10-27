@@ -35,5 +35,67 @@
   "favoritesEmptySubtitle": "Click on the heart icon of your \nfavorite Pokémon and they will appear here.",
   "@favoritesEmptySubtitle": {
     "description": "Subtitle shown when favorites list is empty"
+  },
+  "searchPokemon": "Search Pokémon...",
+  "@searchPokemon": {
+    "description": "Search field placeholder for Pokémon"
+  },
+  "noResultsFound": "No Pokémon found",
+  "@noResultsFound": {
+    "description": "Message when there are no search results"
+  },
+  "tryAnotherSearch": "Try another name or number",
+  "@tryAnotherSearch": {
+    "description": "Suggestion when there are no search results"
+  },
+  "resultsFound": "{count} results found",
+  "@resultsFound": {
+    "description": "Message with the number of results found",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clearFilter": "Clear filter",
+  "@clearFilter": {
+    "description": "Text for clear filter button"
+  },
+  "filterByPreferences": "Filter by your preferences",
+  "@filterByPreferences": {
+    "description": "Title of the filter modal"
+  },
+  "type": "Type",
+  "@type": {
+    "description": "Type label in the filter modal"
+  },
+  "apply": "Apply",
+  "@apply": {
+    "description": "Apply button text"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Favorites screen title"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button text"
+  },
+  "confirmDelete": "Confirm deletion",
+  "@confirmDelete": {
+    "description": "Deletion confirmation dialog title"
+  },
+  "confirmDeleteMessage": "Do you want to remove {name} from your favorites?",
+  "@confirmDeleteMessage": {
+    "description": "Favorite deletion confirmation message",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

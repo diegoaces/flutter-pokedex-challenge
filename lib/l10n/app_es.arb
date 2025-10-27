@@ -35,5 +35,67 @@
   "favoritesEmptySubtitle": "Haz clic en el ícono de corazón de tus \nPokémon favoritos y aparecerán aquí.",
   "@favoritesEmptySubtitle": {
     "description": "Subtítulo mostrado cuando la lista de favoritos está vacía"
+  },
+  "searchPokemon": "Procurar Pokémon...",
+  "@searchPokemon": {
+    "description": "Placeholder del campo de búsqueda de Pokémon"
+  },
+  "noResultsFound": "No se encontraron Pokémon",
+  "@noResultsFound": {
+    "description": "Mensaje cuando no hay resultados en la búsqueda"
+  },
+  "tryAnotherSearch": "Intenta con otro nombre o número",
+  "@tryAnotherSearch": {
+    "description": "Sugerencia cuando no hay resultados en la búsqueda"
+  },
+  "resultsFound": "Se han encontrado {count} resultados",
+  "@resultsFound": {
+    "description": "Mensaje con la cantidad de resultados encontrados",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clearFilter": "Borrar filtro",
+  "@clearFilter": {
+    "description": "Texto del botón para limpiar los filtros"
+  },
+  "filterByPreferences": "Filtra por tus preferencias",
+  "@filterByPreferences": {
+    "description": "Título del modal de filtros"
+  },
+  "type": "Tipo",
+  "@type": {
+    "description": "Etiqueta de tipo en el modal de filtros"
+  },
+  "apply": "Aplicar",
+  "@apply": {
+    "description": "Texto del botón aplicar"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Texto del botón cancelar"
+  },
+  "favorites": "Favoritos",
+  "@favorites": {
+    "description": "Título de la pantalla de favoritos"
+  },
+  "delete": "Eliminar",
+  "@delete": {
+    "description": "Texto del botón eliminar"
+  },
+  "confirmDelete": "Confirmar eliminación",
+  "@confirmDelete": {
+    "description": "Título del diálogo de confirmación de eliminación"
+  },
+  "confirmDeleteMessage": "¿Deseas eliminar a {name} de tus favoritos?",
+  "@confirmDeleteMessage": {
+    "description": "Mensaje de confirmación de eliminación de favorito",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }
