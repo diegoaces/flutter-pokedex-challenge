@@ -4,7 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
+import 'package:poke_app/pages/circle_clipper.dart';
 import 'package:poke_app/pages/element_chip.dart';
+import 'package:poke_app/pages/measurement_card.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 
@@ -139,7 +141,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                                   context.pop();
                                 },
                                 child: const Icon(
-                                  Icons.arrow_back,
+                                  Icons.arrow_back_ios,
                                   color: Colors.white,
                                   size: 24,
                                 ),
@@ -193,6 +195,72 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                         );
                       }).toList(),
                     ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Tiene una semilla de planta en la espalda\ndesde que nace. La semilla crece lentamente.',
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    const SizedBox(height: 12),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        MeasurementCard(
+                          icon: Icons.fitness_center,
+                          label: 'PESO',
+                          value: '6,9 kg',
+                        ),
+                        MeasurementCard(
+                          icon: Icons.height,
+                          label: 'ALTURA',
+                          value: '0,7 m',
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        MeasurementCard(
+                          icon: Icons.fitness_center,
+                          label: 'CATEGORÍA',
+                          value: 'SEMILLA',
+                        ),
+                        MeasurementCard(
+                          icon: Icons.height,
+                          label: 'HABILIDAD',
+                          value: 'ESPESURA',
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Fortalezas y Debilidades',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElementChip(
+                          color: PokemonTypeHelper.getTypeColor('fire'),
+                          title: 'Fuego',
+                          element: PokemonTypeHelper.getTypeAsset('fire'),
+                        ),
+                        ElementChip(
+                          color: PokemonTypeHelper.getTypeColor('psychic'),
+                          title: 'Psíquico',
+                          element: PokemonTypeHelper.getTypeAsset('psychic'),
+                        ),
+                        ElementChip(
+                          color: PokemonTypeHelper.getTypeColor('electric'),
+                          title: 'Hielo',
+                          element: PokemonTypeHelper.getTypeAsset('electric'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -203,24 +271,4 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
       bottomNavigationBar: CustomBottomNavigation(),
     );
   }
-}
-
-class CircleClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    // Creates a path with an oval that fills the given size
-    path.addArc(
-      Rect.fromCircle(
-        center: Offset(size.width / 2, -size.height / 6),
-        radius: size.width / 1.5,
-      ),
-      0,
-      2 * 3.14159265358979323846,
-    );
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
