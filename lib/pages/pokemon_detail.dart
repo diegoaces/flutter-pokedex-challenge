@@ -101,7 +101,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                             },
                             blendMode: BlendMode.srcIn,
                             child: SvgPicture.asset(
-                              'assets/svg/grass.svg',
+                              PokemonTypeHelper.getTypeAsset(primaryType),
                               width: 180,
                               height: 180,
                             ),

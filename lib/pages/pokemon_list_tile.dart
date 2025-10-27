@@ -136,7 +136,7 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
                         },
                         blendMode: BlendMode.srcIn,
                         child: SvgPicture.asset(
-                          'assets/svg/grass.svg',
+                          PokemonTypeHelper.getTypeAsset(primaryType),
                           width: 94,
                           height: 94,
                         ),
