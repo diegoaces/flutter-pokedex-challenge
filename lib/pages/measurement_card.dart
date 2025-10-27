@@ -29,7 +29,7 @@ class MeasurementCard extends StatelessWidget {
                   assetName,
                   width: 14,
                   height: 14,
-                  color: Color(0xFF9CA3AF),
+                  colorFilter: ColorFilter.mode(Color(0xFF9CA3AF), BlendMode.srcIn),
                 ),
                 const SizedBox(width: 6),
                 Text(
