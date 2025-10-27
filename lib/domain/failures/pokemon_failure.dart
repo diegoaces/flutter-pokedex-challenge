@@ -9,17 +9,14 @@ sealed class PokemonFailure {
   String toString() => message;
 }
 
-/// Failure when there's a network connectivity issue.
 class NetworkFailure extends PokemonFailure {
-  const NetworkFailure([String message = 'Network connection failed'])
-      : super(message);
+  const NetworkFailure([super.message = 'Network connection failed']);
 }
 
-/// Failure when the server returns an error response.
 class ServerFailure extends PokemonFailure {
   final int? statusCode;
 
-  const ServerFailure(String message, [this.statusCode]) : super(message);
+  const ServerFailure(super.message, [this.statusCode]);
 
   @override
   String toString() => statusCode != null
@@ -27,29 +24,22 @@ class ServerFailure extends PokemonFailure {
       : 'Server Error: $message';
 }
 
-/// Failure when parsing/deserializing data fails.
 class ParseFailure extends PokemonFailure {
-  const ParseFailure([String message = 'Failed to parse data']) : super(message);
+  const ParseFailure([super.message = 'Failed to parse data']);
 }
 
-/// Failure when data is not found (404).
 class NotFoundFailure extends PokemonFailure {
-  const NotFoundFailure([String message = 'Pokemon not found']) : super(message);
+  const NotFoundFailure([super.message = 'Pokemon not found']);
 }
 
-/// Failure when the request times out.
 class TimeoutFailure extends PokemonFailure {
-  const TimeoutFailure([String message = 'Request timed out']) : super(message);
+  const TimeoutFailure([super.message = 'Request timed out']);
 }
 
-/// Failure when local cache/storage fails.
 class CacheFailure extends PokemonFailure {
-  const CacheFailure([String message = 'Cache operation failed'])
-      : super(message);
+  const CacheFailure([super.message = 'Cache operation failed']);
 }
 
-/// Failure for unknown/unexpected errors.
 class UnknownFailure extends PokemonFailure {
-  const UnknownFailure([String message = 'An unknown error occurred'])
-      : super(message);
+  const UnknownFailure([super.message = 'An unknown error occurred']);
 }
