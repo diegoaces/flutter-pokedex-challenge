@@ -92,11 +92,17 @@ class PokedexWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: pokemons.length,
-            itemBuilder: (context, index) {
-              return PokemonListTile(pokemon: pokemons[index]);
-            },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.separated(
+              itemCount: pokemons.length,
+              itemBuilder: (context, index) {
+                return PokemonListTile(pokemon: pokemons[index]);
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(height: 8);
+              },
+            ),
           ),
         ),
       ],

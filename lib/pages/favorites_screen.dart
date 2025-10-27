@@ -67,12 +67,16 @@ class FavoritesScreen extends ConsumerWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: favorites.length,
-              itemBuilder: (context, index) {
-                final pokemon = favorites[index];
-                return PokemonListTile(pokemon: pokemon);
-              },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(height: 8),
+                itemCount: favorites.length,
+                itemBuilder: (context, index) {
+                  final pokemon = favorites[index];
+                  return PokemonListTile(pokemon: pokemon, showSlidable: true);
+                },
+              ),
             ),
           ),
         ],

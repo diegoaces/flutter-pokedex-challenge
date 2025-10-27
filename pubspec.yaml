@@ -46,6 +46,7 @@ dependencies:
   google_fonts: ^6.3.2
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
+  flutter_slidable: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +96,7 @@ flutter:
     - assets/svg/fav.svg
     - assets/svg/fav_solid.svg
     - assets/svg/search.svg
+    - assets/png/trash.png
 
 
     # Elements
