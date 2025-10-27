@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'PokeApp';
+  String get appTitle => 'Pokedex App';
 
   @override
   String get onboardingTitle1 => 'All Pokémon in \n one place';
@@ -30,4 +30,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get letsStartButton => 'Let\'s Start';
+
+  @override
+  String get favoritesEmptyTitle =>
+      'You haven\'t marked any \nPokémon as favorite';
+
+  @override
+  String get favoritesEmptySubtitle =>
+      'Click on the heart icon of your \nfavorite Pokémon and they will appear here.';
+
+  @override
+  String get searchPokemon => 'Search Pokémon...';
+
+  @override
+  String get noResultsFound => 'No Pokémon found';
+
+  @override
+  String get tryAnotherSearch => 'Try another name or number';
+
+  @override
+  String resultsFound(int count) {
+    return '$count results found';
+  }
+
+  @override
+  String get clearFilter => 'Clear filter';
+
+  @override
+  String get filterByPreferences => 'Filter by your preferences';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get confirmDelete => 'Confirm deletion';
+
+  @override
+  String confirmDeleteMessage(String name) {
+    return 'Do you want to remove $name from your favorites?';
+  }
 }

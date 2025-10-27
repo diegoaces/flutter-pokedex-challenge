@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'PokeApp'**
+  /// **'Pokedex App'**
   String get appTitle;
 
   /// Title of the first onboarding step
@@ -139,6 +139,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let\'s Start'**
   String get letsStartButton;
+
+  /// Title shown when favorites list is empty
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t marked any \nPokémon as favorite'**
+  String get favoritesEmptyTitle;
+
+  /// Subtitle shown when favorites list is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Click on the heart icon of your \nfavorite Pokémon and they will appear here.'**
+  String get favoritesEmptySubtitle;
+
+  /// Search field placeholder for Pokémon
+  ///
+  /// In en, this message translates to:
+  /// **'Search Pokémon...'**
+  String get searchPokemon;
+
+  /// Message when there are no search results
+  ///
+  /// In en, this message translates to:
+  /// **'No Pokémon found'**
+  String get noResultsFound;
+
+  /// Suggestion when there are no search results
+  ///
+  /// In en, this message translates to:
+  /// **'Try another name or number'**
+  String get tryAnotherSearch;
+
+  /// Message with the number of results found
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results found'**
+  String resultsFound(int count);
+
+  /// Text for clear filter button
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get clearFilter;
+
+  /// Title of the filter modal
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by your preferences'**
+  String get filterByPreferences;
+
+  /// Type label in the filter modal
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// Apply button text
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// Cancel button text
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Favorites screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// Delete button text
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// Deletion confirmation dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm deletion'**
+  String get confirmDelete;
+
+  /// Favorite deletion confirmation message
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to remove {name} from your favorites?'**
+  String confirmDeleteMessage(String name);
 }
 
 class _AppLocalizationsDelegate

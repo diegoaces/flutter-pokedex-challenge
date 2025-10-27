@@ -1,5 +1,5 @@
 name: poke_app
-description: "PokeApp"
+description: "Pokedex App"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -41,10 +41,20 @@ dependencies:
   go_router: ^16.3.0
   intl: ^0.20.2
   flutter_riverpod: ^3.0.3
+  dio: ^5.9.0
+  riverpod_annotation: ^3.0.3
+  google_fonts: ^6.3.2
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+  flutter_slidable: ^3.1.1
+  flutter_launcher_icons: ^0.14.4
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -52,6 +62,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  riverpod_generator: ^3.0.3
+  build_runner: ^2.7.1
+  riverpod_lint: ^3.0.3
+  custom_lint: ^0.8.0
+  freezed: ^3.2.3
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,6 +90,41 @@ flutter:
     - assets/svg/pokeball2.svg
     - assets/png/onboarding.png
     - assets/png/onboarding2.png
+    - assets/svg/heart.svg
+    - assets/svg/globe.svg
+    - assets/svg/home.svg
+    - assets/svg/user.svg
+    # 
+    - assets/svg/fav.svg
+    - assets/svg/fav_solid.svg
+    - assets/svg/search.svg
+    - assets/png/trash.png
+
+
+    # Elements
+    - assets/svg/grass.svg
+    - assets/svg/poison.svg
+    - assets/svg/water.svg
+    - assets/svg/fire.svg
+    - assets/svg/bug.svg
+    - assets/svg/flying.svg
+    - assets/svg/normal.svg
+
+    #icons
+    - assets/svg/weight-hanging.svg
+    - assets/svg/category.svg
+    - assets/svg/pokeball_2.svg
+    - assets/svg/column-height-outlined.svg
+    
+
+    # Pokemons
+    - assets/svg/magikarp.svg
+    - assets/png/magikarp.png
+    - assets/png/pokemon1.png
+
+    # Screen 
+    - assets/png/regiones.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
