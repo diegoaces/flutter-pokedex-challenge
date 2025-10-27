@@ -23,11 +23,7 @@ class PokedexScreen extends ConsumerWidget {
             },
           ),
           loading: () => Center(
-            child: SizedBox(
-              height: 50,
-              width: 50,
-              child: PokeballLoading(),
-            ),
+            child: SizedBox(height: 50, width: 50, child: PokeballLoading()),
           ),
           error: (error, stack) => PokedexErrorWidget(),
         ),

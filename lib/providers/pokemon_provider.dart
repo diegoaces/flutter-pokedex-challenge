@@ -1,3 +1,4 @@
+import 'package:poke_app/core/exceptions/api_exception.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/models/pokemon_list_response.dart';
 import 'package:poke_app/providers/dio_provider.dart';
@@ -28,7 +29,7 @@ Future<List<Pokemon>> pokemonList(Ref ref) async {
 
     return pokemons;
   } catch (e) {
-    throw Exception('Error al cargar pokemones: $e');
+    throw ApiException('Error al cargar pokemones: $e');
   }
 }
 
@@ -45,6 +46,6 @@ Future<Pokemon> pokemon(Ref ref, int id) async {
       name: response.data['name'] as String,
     );
   } catch (e) {
-    throw Exception('Error al cargar pokemon $id: $e');
+    throw ApiException('Error al cargar pokemon $id: $e');
   }
 }
