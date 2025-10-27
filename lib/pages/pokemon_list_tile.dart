@@ -100,7 +100,6 @@ class PokemonListTile extends ConsumerWidget {
                   ),
                 ),
 
-                // Icono de círculo en la esquina superior derecha
                 Positioned(
                   top: 8,
                   right: 8,
