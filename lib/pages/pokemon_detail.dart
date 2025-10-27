@@ -206,12 +206,12 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
                         MeasurementCard(
-                          icon: Icons.fitness_center,
+                          assetName: 'assets/svg/weight-hanging.svg',
                           label: 'PESO',
                           value: '6,9 kg',
                         ),
                         MeasurementCard(
-                          icon: Icons.height,
+                          assetName: 'assets/svg/column-height-outlined.svg',
                           label: 'ALTURA',
                           value: '0,7 m',
                         ),
@@ -221,12 +221,12 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
                         MeasurementCard(
-                          icon: Icons.fitness_center,
+                          assetName: 'assets/svg/category.svg',
                           label: 'CATEGORÍA',
                           value: 'SEMILLA',
                         ),
                         MeasurementCard(
-                          icon: Icons.height,
+                          assetName: 'assets/svg/pokeball_2.svg',
                           label: 'HABILIDAD',
                           value: 'ESPESURA',
                         ),

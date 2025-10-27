@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MeasurementCard extends StatelessWidget {
-  final IconData icon;
+  final String assetName;
   final String label;
   final String value;
 
   const MeasurementCard({
     super.key,
-    required this.icon,
+    required this.assetName,
     required this.label,
     required this.value,
   });
@@ -24,7 +25,12 @@ class MeasurementCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(icon, size: 14, color: Color(0xFF9CA3AF)),
+                SvgPicture.asset(
+                  assetName,
+                  width: 14,
+                  height: 14,
+                  color: Color(0xFF9CA3AF),
+                ),
                 const SizedBox(width: 6),
                 Text(
                   label,

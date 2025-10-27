@@ -108,6 +108,13 @@ flutter:
     - assets/svg/flying.svg
     - assets/svg/normal.svg
 
+    #icons
+    - assets/svg/weight-hanging.svg
+    - assets/svg/category.svg
+    - assets/svg/pokeball_2.svg
+    - assets/svg/column-height-outlined.svg
+    
+
     # Pokemons
     - assets/svg/magikarp.svg
     - assets/png/magikarp.png
