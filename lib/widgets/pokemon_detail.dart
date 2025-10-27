@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/pages/circle_clipper.dart';
+import 'package:poke_app/widgets/circle_clipper.dart';
 import 'package:poke_app/widgets/element_chip.dart';
 import 'package:poke_app/widgets/measurement_card.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
