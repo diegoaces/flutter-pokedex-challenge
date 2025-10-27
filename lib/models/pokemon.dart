@@ -16,4 +16,7 @@ abstract class Pokemon with _$Pokemon {
     if (name.isEmpty) return name;
     return '${name[0].toUpperCase()}${name.substring(1)}';
   }
+  String idWithLeadingZeros() {
+    return id.toString().padLeft(3, '0');
+  }
 }

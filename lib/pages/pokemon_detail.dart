@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/models/pokemon.dart';
+import 'package:poke_app/pages/element_chip.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 
 class PokemonDetail extends StatelessWidget {
@@ -20,7 +21,7 @@ class PokemonDetail extends StatelessWidget {
             children: [
               // Header con imagen
               SizedBox(
-                height: 380,
+                height: 260,
                 child: Stack(
                   children: [
                     // Fondo decorativo con circulo recortado
@@ -31,48 +32,56 @@ class PokemonDetail extends StatelessWidget {
                       child: ClipPath(
                         clipper: CircleClipper(),
                         child: Container(
-                          height: 280,
+                          height: 350,
                           width: double.infinity,
                           color: grassPrimary,
                         ),
                       ),
                     ),
-                    Center(
-                      child: ShaderMask(
-                        shaderCallback: (Rect bounds) {
-                          return LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Colors.white,
-                              Colors.white.withAlpha(200),
-                              Colors.white.withAlpha(26),
-                            ],
-                          ).createShader(bounds);
-                        },
-                        blendMode: BlendMode.srcIn,
-                        child: SvgPicture.asset(
-                          'assets/svg/grass.svg',
-                          width: 150,
-                          height: 150,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Colors.white,
+                                  Colors.white.withAlpha(200),
+                                  Colors.white.withAlpha(26),
+                                ],
+                              ).createShader(bounds);
+                            },
+                            blendMode: BlendMode.srcIn,
+                            child: SvgPicture.asset(
+                              'assets/svg/grass.svg',
+                              width: 180,
+                              height: 180,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                    Container(
-                      alignment: Alignment.bottomCenter,
-                      child: Image.network(
-                        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png',
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Icon(
-                            Icons.image_not_supported,
-                            size: 200,
-                            color: Colors.white,
-                          );
-                        },
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.network(
+                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png',
+                          height: 200,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(
+                              Icons.image_not_supported,
+                              size: 160,
+                              color: Colors.white,
+                            );
+                          },
+                        ),
+                      ],
                     ),
                     // Contenido
                     Padding(
@@ -103,10 +112,42 @@ class PokemonDetail extends StatelessWidget {
                               ),
                             ],
                           ),
-
-                          // Imagen del Pokémon
                         ],
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      pokemon.nameCapitalizedFirstLetter(),
+                      style: const TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      'N°${pokemon.idWithLeadingZeros()}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    Row(
+                      children: [
+                        ElementChip(
+                          color: grassPrimary,
+                          title: 'Planta',
+                          element: 'assets/svg/grass.svg',
+                        ),
+                        ElementChip(
+                          color: poisonPrimary,
+                          title: 'Veneno',
+                          element: 'assets/svg/poison.svg',
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -127,7 +168,7 @@ class CircleClipper extends CustomClipper<Path> {
     // Creates a path with an oval that fills the given size
     path.addArc(
       Rect.fromCircle(
-        center: Offset(size.width / 2, 0),
+        center: Offset(size.width / 2, -size.height / 6),
         radius: size.width / 1.5,
       ),
       0,
