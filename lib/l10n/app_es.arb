@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "appTitle": "PokeApp",
+  "appTitle": "Pokedex App",
   "@appTitle": {
     "description": "El título de la aplicación"
   },

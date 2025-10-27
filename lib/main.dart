@@ -15,7 +15,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      title: 'PokeApp',
+      title: 'Pokedex App',
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
       routerConfig: ref.watch(appRouterProvider),
