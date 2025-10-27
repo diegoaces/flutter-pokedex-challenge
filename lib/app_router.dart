@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/app_routes.dart';
 import 'package:poke_app/pages/favorites_screen.dart';
-import 'package:poke_app/pages/home_screen.dart';
+import 'package:poke_app/pages/pokedex_screen.dart';
 import 'package:poke_app/pages/onboarding_screen.dart';
 import 'package:poke_app/pages/profile_screen.dart';
 import 'package:poke_app/pages/regiones_screen.dart';

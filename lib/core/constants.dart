@@ -3,7 +3,7 @@ class AppConstants {
   AppConstants._(); // Private constructor to prevent instantiation
 
   // API constants
-  static const String apiBaseUrl = 'https://pokeapi.co/api/v2';
+  static const String apiBaseUrl = 'https://pokeapi.co/api/v2/';
   static const Duration apiTimeout = Duration(seconds: 30);
 
   // Timing constants
