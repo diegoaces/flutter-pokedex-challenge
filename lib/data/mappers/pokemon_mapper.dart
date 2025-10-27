@@ -4,29 +4,17 @@ import 'package:poke_app/domain/entities/pokemon_entity.dart';
 
 class PokemonMapper {
   PokemonEntity dtoToEntity(PokemonDTO dto) {
-    return PokemonEntity(
-      id: dto.id,
-      name: dto.name,
-      types: dto.types,
-    );
+    return PokemonEntity(id: dto.id, name: dto.name, types: dto.types);
   }
 
   PokemonEntity detailResponseToEntity(PokemonDetailResponseDTO dto) {
     final types = dto.types.map((typeSlot) => typeSlot.type.name).toList();
 
-    return PokemonEntity(
-      id: dto.id,
-      name: dto.name,
-      types: types,
-    );
+    return PokemonEntity(id: dto.id, name: dto.name, types: types);
   }
 
   PokemonDTO entityToDto(PokemonEntity entity) {
-    return PokemonDTO(
-      id: entity.id,
-      name: entity.name,
-      types: entity.types,
-    );
+    return PokemonDTO(id: entity.id, name: entity.name, types: entity.types);
   }
 
   List<PokemonEntity> dtoListToEntityList(List<PokemonDTO> dtos) {

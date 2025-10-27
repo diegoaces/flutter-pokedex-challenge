@@ -16,11 +16,7 @@ class RegionesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/png/regiones.png',
-                  width: 215,
-                  height: 215,
-                ),
+                Image.asset('assets/png/regiones.png', width: 215, height: 215),
               ],
             ),
             const SizedBox(height: 8),
@@ -34,7 +30,6 @@ class RegionesScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14),
             ),
-            
           ],
         ),
       ),

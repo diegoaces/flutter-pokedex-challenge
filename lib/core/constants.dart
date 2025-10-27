@@ -35,5 +35,4 @@ class AppConstants {
   static const String pokeballSvg = 'assets/svg/pokeball.svg';
   static const String pokeball1Svg = 'assets/svg/pokeball1.svg';
   static const String pokeball2Svg = 'assets/svg/pokeball2.svg';
-
 }

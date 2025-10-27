@@ -160,7 +160,8 @@ class _FilterPreferencesModalState extends State<FilterPreferencesModal> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectedTypes[typeKey] = !selectedTypes[typeKey]!;
+                                selectedTypes[typeKey] =
+                                    !selectedTypes[typeKey]!;
                               });
                             },
                             child: Container(

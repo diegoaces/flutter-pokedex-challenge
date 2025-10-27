@@ -63,7 +63,10 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
 
     final tile = GestureDetector(
       onTap: () {
-        context.push(AppRoutes.pokemonDetailPath(widget.pokemon.id), extra: widget.pokemon);
+        context.push(
+          AppRoutes.pokemonDetailPath(widget.pokemon.id),
+          extra: widget.pokemon,
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -73,131 +76,131 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
         child: IntrinsicHeight(
           child: Row(
             children: [
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "N°00${widget.pokemon.id}",
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "N°00${widget.pokemon.id}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                    Text(
-                      widget.pokemon.displayName(),
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        widget.pokemon.displayName(),
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Row(
-                      children: widget.pokemon.types.map((type) {
-                        return ElementChip(
-                          color: PokemonTypeHelper.getTypeColor(type),
-                          title: PokemonTypeHelper.getTypeLabel(type),
-                          element: PokemonTypeHelper.getTypeAsset(type),
-                        );
-                      }).toList(),
-                    ),
-                  ],
+                      SizedBox(height: 8),
+                      Row(
+                        children: widget.pokemon.types.map((type) {
+                          return ElementChip(
+                            color: PokemonTypeHelper.getTypeColor(type),
+                            title: PokemonTypeHelper.getTypeLabel(type),
+                            element: PokemonTypeHelper.getTypeAsset(type),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: backgroundColor.withAlpha(128),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                  ),
-                  Positioned.fill(
-                    child: Center(
-                      child: ShaderMask(
-                        shaderCallback: (Rect bounds) {
-                          return LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Colors.white,
-                              Colors.white.withAlpha(200),
-                              Colors.white.withAlpha(26),
-                            ],
-                          ).createShader(bounds);
-                        },
-                        blendMode: BlendMode.srcIn,
-                        child: SvgPicture.asset(
-                          PokemonTypeHelper.getTypeAsset(primaryType),
-                          width: 94,
-                          height: 94,
+              Expanded(
+                flex: 2,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: backgroundColor.withAlpha(128),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                     ),
-                  ),
-
-                  Positioned(
-                    top: 8,
-                    right: 8,
-                    child: GestureDetector(
-                      onTap: _onFavoriteTap,
-                      child: ScaleTransition(
-                        scale: _scaleAnimation,
-                        child: Container(
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                            color: isFavorite ? Colors.red : Colors.grey,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white, width: 3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: SvgPicture.asset(
-                              isFavorite
-                                  ? 'assets/svg/fav_solid.svg'
-                                  : 'assets/svg/fav.svg',
-                              fit: BoxFit.contain,
-                              colorFilter: const ColorFilter.mode(
+                    Positioned.fill(
+                      child: Center(
+                        child: ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
                                 Colors.white,
-                                BlendMode.srcIn,
+                                Colors.white.withAlpha(200),
+                                Colors.white.withAlpha(26),
+                              ],
+                            ).createShader(bounds);
+                          },
+                          blendMode: BlendMode.srcIn,
+                          child: SvgPicture.asset(
+                            PokemonTypeHelper.getTypeAsset(primaryType),
+                            width: 94,
+                            height: 94,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      top: 8,
+                      right: 8,
+                      child: GestureDetector(
+                        onTap: _onFavoriteTap,
+                        child: ScaleTransition(
+                          scale: _scaleAnimation,
+                          child: Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              color: isFavorite ? Colors.red : Colors.grey,
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: SvgPicture.asset(
+                                isFavorite
+                                    ? 'assets/svg/fav_solid.svg'
+                                    : 'assets/svg/fav.svg',
+                                fit: BoxFit.contain,
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
 
-                  Center(
-                    child: Image.network(
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${widget.pokemon.id}.png',
-                      height: 100,
-                      width: 100,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(Icons.broken_image, size: 50),
+                    Center(
+                      child: Image.network(
+                        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${widget.pokemon.id}.png',
+                        height: 100,
+                        width: 100,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(Icons.broken_image, size: 50),
+                              ),
                             ),
-                          ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
         ),
       ),
     );
@@ -212,13 +215,17 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
         motion: const ScrollMotion(),
         dismissible: DismissiblePane(
           onDismissed: () {
-            ref.read(favoritesProvider.notifier).removeFavorite(widget.pokemon.id);
+            ref
+                .read(favoritesProvider.notifier)
+                .removeFavorite(widget.pokemon.id);
           },
         ),
         children: [
           SlidableAction(
             onPressed: (context) {
-              ref.read(favoritesProvider.notifier).removeFavorite(widget.pokemon.id);
+              ref
+                  .read(favoritesProvider.notifier)
+                  .removeFavorite(widget.pokemon.id);
             },
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,

@@ -13,8 +13,8 @@ class PokemonRepositoryImpl implements PokemonRepository {
   const PokemonRepositoryImpl({
     required PokemonRemoteDataSource remoteDataSource,
     required PokemonMapper mapper,
-  })  : _remoteDataSource = remoteDataSource,
-        _mapper = mapper;
+  }) : _remoteDataSource = remoteDataSource,
+       _mapper = mapper;
 
   @override
   Future<Result<List<PokemonEntity>>> getPokemonList({
@@ -104,9 +104,11 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
       return result.map((pokemons) {
         return pokemons.where((pokemon) {
-          return pokemon.types.any((type) =>
-              types.any((filterType) =>
-                  type.toLowerCase() == filterType.toLowerCase()));
+          return pokemon.types.any(
+            (type) => types.any(
+              (filterType) => type.toLowerCase() == filterType.toLowerCase(),
+            ),
+          );
         }).toList();
       });
     } catch (e) {

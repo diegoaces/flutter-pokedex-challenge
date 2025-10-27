@@ -17,10 +17,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     try {
       final response = await _dio.get(
         'pokemon',
-        queryParameters: {
-          'limit': limit,
-          'offset': offset,
-        },
+        queryParameters: {'limit': limit, 'offset': offset},
       );
 
       return PokemonListResponseDTO.fromJson(response.data);
@@ -63,19 +60,13 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return TimeoutException(
-          'Request timed out: ${e.message}',
-          e,
-        );
+        return TimeoutException('Request timed out: ${e.message}', e);
 
       case DioExceptionType.badResponse:
         final statusCode = e.response?.statusCode;
 
         if (statusCode == 404) {
-          return NotFoundException(
-            'Resource not found',
-            e,
-          );
+          return NotFoundException('Resource not found', e);
         }
 
         if (statusCode != null && statusCode >= 500) {
@@ -94,10 +85,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
 
       case DioExceptionType.connectionError:
       case DioExceptionType.unknown:
-        return NetworkException(
-          'Network error: ${e.message}',
-          e,
-        );
+        return NetworkException('Network error: ${e.message}', e);
 
       case DioExceptionType.cancel:
         return NetworkException('Request was cancelled', e);

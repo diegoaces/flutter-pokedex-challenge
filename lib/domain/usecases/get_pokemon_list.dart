@@ -20,7 +20,7 @@ class GetPokemonList {
     }
 
     if (offset < 0) {
-      offset = 0; 
+      offset = 0;
     }
 
     return await _repository.getPokemonList(limit: limit, offset: offset);

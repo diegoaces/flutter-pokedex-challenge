@@ -36,10 +36,7 @@ class _PokemonSearchBarState extends State<PokemonSearchBar> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: Colors.grey[300]!,
-                      width: 1.5,
-                    ),
+                    border: Border.all(color: Colors.grey[300]!, width: 1.5),
                     color: Colors.white,
                   ),
                   child: TextField(
@@ -61,10 +58,7 @@ class _PokemonSearchBarState extends State<PokemonSearchBar> {
                         horizontal: 8,
                       ),
                     ),
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 16,
-                    ),
+                    style: TextStyle(color: Colors.black87, fontSize: 16),
                     onSubmitted: (value) {
                       if (value.isNotEmpty) {
                         _performSearch(value);
@@ -86,17 +80,10 @@ class _PokemonSearchBarState extends State<PokemonSearchBar> {
                   height: 56,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.grey[300]!,
-                      width: 1.5,
-                    ),
+                    border: Border.all(color: Colors.grey[300]!, width: 1.5),
                     color: Colors.white,
                   ),
-                  child: Icon(
-                    Icons.search,
-                    color: Colors.grey[400],
-                    size: 28,
-                  ),
+                  child: Icon(Icons.search, color: Colors.grey[400], size: 28),
                 ),
               ),
             ],

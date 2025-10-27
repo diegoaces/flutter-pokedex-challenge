@@ -41,11 +41,7 @@ class PokemonEntity {
   @override
   String toString() => 'PokemonEntity(id: $id, name: $name, types: $types)';
 
-  PokemonEntity copyWith({
-    int? id,
-    String? name,
-    List<String>? types,
-  }) {
+  PokemonEntity copyWith({int? id, String? name, List<String>? types}) {
     return PokemonEntity(
       id: id ?? this.id,
       name: name ?? this.name,

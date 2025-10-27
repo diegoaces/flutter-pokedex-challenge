@@ -23,10 +23,7 @@ class PokedexErrorWidget extends StatelessWidget {
             const SizedBox(height: 8),
             const Text(
               'Algo salió mal...',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const Text(

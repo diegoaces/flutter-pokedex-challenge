@@ -103,10 +103,7 @@ sealed class Result<T> {
 
   /// Gets the value or returns a default.
   T getOrElse(T Function() defaultValue) {
-    return when(
-      success: (value) => value,
-      failure: (_) => defaultValue(),
-    );
+    return when(success: (value) => value, failure: (_) => defaultValue());
   }
 }
 
@@ -122,7 +119,9 @@ class Success<T> extends Result<T> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Success<T> && runtimeType == other.runtimeType && data == other.data;
+      other is Success<T> &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
 
   @override
   int get hashCode => data.hashCode;
@@ -140,7 +139,9 @@ class Failure<T> extends Result<T> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Failure<T> && runtimeType == other.runtimeType && error == other.error;
+      other is Failure<T> &&
+          runtimeType == other.runtimeType &&
+          error == other.error;
 
   @override
   int get hashCode => error.hashCode;

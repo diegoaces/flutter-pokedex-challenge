@@ -32,7 +32,7 @@ class CustomDefaultButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label,
-          style:  TextStyle(
+          style: TextStyle(
             fontSize: AppConstants.buttonFontSize,
             color: textColor,
             fontWeight: FontWeight.bold,

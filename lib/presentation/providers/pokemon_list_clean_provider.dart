@@ -76,10 +76,7 @@ class PaginatedPokemonList extends _$PaginatedPokemonList {
   Future<List<PokemonEntity>> _fetchPage(int page) async {
     final useCase = ref.read(getPokemonListUseCaseProvider);
 
-    final result = await useCase.fetchPage(
-      page: page,
-      pageSize: _pageSize,
-    );
+    final result = await useCase.fetchPage(page: page, pageSize: _pageSize);
 
     return result.when(
       success: (pokemons) => pokemons,

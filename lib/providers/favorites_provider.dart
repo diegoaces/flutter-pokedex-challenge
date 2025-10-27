@@ -54,8 +54,8 @@ class FavoritesNotifier extends Notifier<Map<int, Pokemon>> {
 /// Provider principal para manejar favoritos
 final favoritesProvider =
     NotifierProvider<FavoritesNotifier, Map<int, Pokemon>>(() {
-  return FavoritesNotifier();
-});
+      return FavoritesNotifier();
+    });
 
 /// Provider para verificar si un pokemon específico es favorito
 final isFavoriteProvider = Provider.family<bool, int>((ref, pokemonId) {

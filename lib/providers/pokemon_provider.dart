@@ -29,11 +29,7 @@ Future<List<Pokemon>> pokemonList(Ref ref) async {
           .map((typeInfo) => typeInfo['type']['name'] as String)
           .toList();
 
-      return Pokemon(
-        id: result.id,
-        name: result.name,
-        types: types,
-      );
+      return Pokemon(id: result.id, name: result.name, types: types);
     });
 
     final pokemons = await Future.wait(pokemonsFutures);

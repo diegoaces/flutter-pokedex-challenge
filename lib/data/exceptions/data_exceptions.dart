@@ -9,7 +9,10 @@ abstract class DataException implements Exception {
 }
 
 class NetworkException extends DataException {
-  const NetworkException([super.message = 'Network error occurred', super.originalError]);
+  const NetworkException([
+    super.message = 'Network error occurred',
+    super.originalError,
+  ]);
 }
 
 class ServerException extends DataException {
@@ -28,17 +31,29 @@ class ServerException extends DataException {
 }
 
 class ParseException extends DataException {
-  const ParseException([super.message = 'Failed to parse data', super.originalError]);
+  const ParseException([
+    super.message = 'Failed to parse data',
+    super.originalError,
+  ]);
 }
 
 class NotFoundException extends DataException {
-  const NotFoundException([super.message = 'Resource not found', super.originalError]);
+  const NotFoundException([
+    super.message = 'Resource not found',
+    super.originalError,
+  ]);
 }
 
 class TimeoutException extends DataException {
-  const TimeoutException([super.message = 'Request timed out', super.originalError]);
+  const TimeoutException([
+    super.message = 'Request timed out',
+    super.originalError,
+  ]);
 }
 
 class CacheException extends DataException {
-  const CacheException([super.message = 'Cache operation failed', super.originalError]);
+  const CacheException([
+    super.message = 'Cache operation failed',
+    super.originalError,
+  ]);
 }
