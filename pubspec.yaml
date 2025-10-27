@@ -102,6 +102,7 @@ flutter:
     # Elements
     - assets/svg/grass.svg
     - assets/svg/poison.svg
+    - assets/svg/water.svg
     # Pokemons
     - assets/svg/magikarp.svg
     - assets/png/magikarp.png

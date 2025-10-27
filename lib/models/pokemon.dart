@@ -7,7 +7,11 @@ part 'pokemon.g.dart';
 abstract class Pokemon with _$Pokemon {
   const Pokemon._();
 
-  const factory Pokemon({required int id, required String name}) = _Pokemon;
+  const factory Pokemon({
+    required int id,
+    required String name,
+    @Default([]) List<String> types,
+  }) = _Pokemon;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) =>
       _$PokemonFromJson(json);

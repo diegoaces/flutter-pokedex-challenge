@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/core/app_routes.dart';
+import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
@@ -56,6 +57,10 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
   @override
   Widget build(BuildContext context) {
     final isFavorite = ref.watch(isFavoriteProvider(widget.pokemon.id));
+    final primaryType = widget.pokemon.types.isNotEmpty
+        ? widget.pokemon.types.first
+        : 'normal';
+    final backgroundColor = PokemonTypeHelper.getTypeColor(primaryType);
 
     final tile = GestureDetector(
       onTap: () {
@@ -63,7 +68,7 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.greenAccent.shade100,
+          color: backgroundColor.withAlpha(77),
           borderRadius: BorderRadius.circular(16),
         ),
         child: IntrinsicHeight(
@@ -92,18 +97,13 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
                     ),
                     SizedBox(height: 8),
                     Row(
-                      children: [
-                        ElementChip(
-                          color: grassPrimary,
-                          title: 'Planta',
-                          element: 'assets/svg/grass.svg',
-                        ),
-                        ElementChip(
-                          color: poisonPrimary,
-                          title: 'Veneno',
-                          element: 'assets/svg/poison.svg',
-                        ),
-                      ],
+                      children: widget.pokemon.types.map((type) {
+                        return ElementChip(
+                          color: PokemonTypeHelper.getTypeColor(type),
+                          title: PokemonTypeHelper.getTypeLabel(type),
+                          element: PokemonTypeHelper.getTypeAsset(type),
+                        );
+                      }).toList(),
                     ),
                   ],
                 ),
@@ -116,7 +116,7 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
                   Positioned.fill(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: grassSolid,
+                        color: backgroundColor.withAlpha(128),
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),

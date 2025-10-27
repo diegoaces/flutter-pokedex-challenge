@@ -22,11 +22,21 @@ Future<List<Pokemon>> pokemonList(Ref ref) async {
       response.data as Map<String, dynamic>,
     );
 
-    // Convertir ApiResult a Pokemon
-    final pokemons = pokemonListResponse.results.map((result) {
-      return Pokemon(id: result.id, name: result.name);
-    }).toList();
+    // Obtener los detalles de cada pokemon (incluyendo tipos)
+    final pokemonsFutures = pokemonListResponse.results.map((result) async {
+      final detailResponse = await dio.get('pokemon/${result.id}');
+      final types = (detailResponse.data['types'] as List)
+          .map((typeInfo) => typeInfo['type']['name'] as String)
+          .toList();
 
+      return Pokemon(
+        id: result.id,
+        name: result.name,
+        types: types,
+      );
+    });
+
+    final pokemons = await Future.wait(pokemonsFutures);
     return pokemons;
   } catch (e) {
     throw ApiException('Error al cargar pokemones: $e');
@@ -41,9 +51,14 @@ Future<Pokemon> pokemon(Ref ref, int id) async {
   try {
     final response = await dio.get('pokemon/$id');
 
+    final types = (response.data['types'] as List)
+        .map((typeInfo) => typeInfo['type']['name'] as String)
+        .toList();
+
     return Pokemon(
       id: response.data['id'] as int,
       name: response.data['name'] as String,
+      types: types,
     );
   } catch (e) {
     throw ApiException('Error al cargar pokemon $id: $e');

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:poke_app/colors.dart';
+import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
@@ -50,6 +50,11 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
   @override
   Widget build(BuildContext context) {
     final isFavorite = ref.watch(isFavoriteProvider(widget.pokemon.id));
+    final primaryType = widget.pokemon.types.isNotEmpty
+        ? widget.pokemon.types.first
+        : 'normal';
+    final backgroundColor = PokemonTypeHelper.getTypeColor(primaryType);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -71,7 +76,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                         child: Container(
                           height: 350,
                           width: double.infinity,
-                          color: grassPrimary,
+                          color: backgroundColor,
                         ),
                       ),
                     ),
@@ -180,18 +185,13 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                       style: const TextStyle(fontSize: 20),
                     ),
                     Row(
-                      children: [
-                        ElementChip(
-                          color: grassPrimary,
-                          title: 'Planta',
-                          element: 'assets/svg/grass.svg',
-                        ),
-                        ElementChip(
-                          color: poisonPrimary,
-                          title: 'Veneno',
-                          element: 'assets/svg/poison.svg',
-                        ),
-                      ],
+                      children: widget.pokemon.types.map((type) {
+                        return ElementChip(
+                          color: PokemonTypeHelper.getTypeColor(type),
+                          title: PokemonTypeHelper.getTypeLabel(type),
+                          element: PokemonTypeHelper.getTypeAsset(type),
+                        );
+                      }).toList(),
                     ),
                   ],
                 ),

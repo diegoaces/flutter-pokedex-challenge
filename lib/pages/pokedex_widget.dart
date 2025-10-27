@@ -16,6 +16,7 @@ class PokedexWidget extends StatefulWidget {
 class _PokedexWidgetState extends State<PokedexWidget> {
   final TextEditingController _searchController = TextEditingController();
   List<Pokemon> _filteredPokemons = [];
+  List<String> _selectedTypeFilters = [];
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
   void didUpdateWidget(PokedexWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.pokemons != widget.pokemons) {
-      _filterPokemons(_searchController.text);
+      _applyFilters();
     }
   }
 
@@ -37,18 +38,40 @@ class _PokedexWidgetState extends State<PokedexWidget> {
     super.dispose();
   }
 
-  void _filterPokemons(String query) {
+  void _applyFilters() {
     setState(() {
-      if (query.isEmpty) {
-        _filteredPokemons = widget.pokemons;
-      } else {
-        _filteredPokemons = widget.pokemons
+      var filtered = widget.pokemons;
+
+      // Filtrar por texto de búsqueda
+      if (_searchController.text.isNotEmpty) {
+        final query = _searchController.text;
+        filtered = filtered
             .where((pokemon) =>
                 pokemon.name.toLowerCase().contains(query.toLowerCase()) ||
                 pokemon.id.toString().contains(query))
             .toList();
       }
+
+      // Filtrar por tipos seleccionados
+      if (_selectedTypeFilters.isNotEmpty) {
+        filtered = filtered.where((pokemon) {
+          return pokemon.types.any((type) => _selectedTypeFilters.contains(type));
+        }).toList();
+      }
+
+      _filteredPokemons = filtered;
     });
+  }
+
+  void _filterPokemons(String query) {
+    _applyFilters();
+  }
+
+  void _onApplyTypeFilters(List<String> selectedTypes) {
+    setState(() {
+      _selectedTypeFilters = selectedTypes;
+    });
+    _applyFilters();
   }
 
   @override
@@ -114,7 +137,7 @@ class _PokedexWidgetState extends State<PokedexWidget> {
                     isScrollControlled: true,
                     useSafeArea: true,
                     builder: (context) => FilterPreferencesModal(
-                      onApplyFilters: (selectedTypes) {},
+                      onApplyFilters: _onApplyTypeFilters,
                     ),
                   );
                 },
@@ -143,6 +166,40 @@ class _PokedexWidgetState extends State<PokedexWidget> {
             ],
           ),
         ),
+        if (_selectedTypeFilters.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Se han encontrado ${_filteredPokemons.length} resultados',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _selectedTypeFilters = [];
+                    });
+                    _applyFilters();
+                  },
+                  child: const Text(
+                    'Borrar filtro',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
