@@ -1,4 +1,4 @@
-import 'package:poke_app/core/exceptions/api_exception.dart';
+import 'package:poke_app/core/api_exception.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/models/pokemon_list_response.dart';
 import 'package:poke_app/providers/dio_provider.dart';
