@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/widgets/pokeball_loading.dart';
+import 'package:poke_app/presentation/widgets/pokeball_loading.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

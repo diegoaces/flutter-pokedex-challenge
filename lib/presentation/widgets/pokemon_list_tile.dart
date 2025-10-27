@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/app_routes.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
-import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/widgets/element_chip.dart';
+import 'package:poke_app/domain/entities/pokemon.dart';
+import 'package:poke_app/presentation/widgets/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 
 class PokemonListTile extends ConsumerStatefulWidget {
@@ -88,7 +88,7 @@ class _PokemonListTileState extends ConsumerState<PokemonListTile>
                       ),
                     ),
                     Text(
-                      widget.pokemon.nameCapitalizedFirstLetter(),
+                      widget.pokemon.displayName(),
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

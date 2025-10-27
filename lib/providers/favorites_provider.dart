@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:poke_app/models/pokemon.dart';
+import 'package:poke_app/domain/entities/pokemon.dart';
 
 /// Notifier que maneja la lista de pokemones favoritos
 class FavoritesNotifier extends Notifier<Map<int, Pokemon>> {

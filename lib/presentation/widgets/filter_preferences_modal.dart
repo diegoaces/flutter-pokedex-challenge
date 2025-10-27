@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
-import 'package:poke_app/widgets/custom_default_button.dart';
+import 'package:poke_app/presentation/widgets/custom_default_button.dart';
 
 /// Modal para filtrar preferencias de Pokémon por tipo.
 /// Permite seleccionar múltiples tipos y aplicar los filtros.

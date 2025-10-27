@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
-import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/widgets/pokemon_list_tile.dart';
-import 'package:poke_app/widgets/filter_preferences_modal.dart';
+import 'package:poke_app/presentation/widgets/pokemon_list_tile.dart';
+import 'package:poke_app/presentation/widgets/filter_preferences_modal.dart';
+
+import '../../domain/entities/pokemon.dart';
 
 class PokedexWidget extends StatefulWidget {
   const PokedexWidget({super.key, required this.pokemons});
@@ -47,16 +48,20 @@ class _PokedexWidgetState extends State<PokedexWidget> {
       if (_searchController.text.isNotEmpty) {
         final query = _searchController.text;
         filtered = filtered
-            .where((pokemon) =>
-                pokemon.name.toLowerCase().contains(query.toLowerCase()) ||
-                pokemon.id.toString().contains(query))
+            .where(
+              (pokemon) =>
+                  pokemon.name.toLowerCase().contains(query.toLowerCase()) ||
+                  pokemon.id.toString().contains(query),
+            )
             .toList();
       }
 
       // Filtrar por tipos seleccionados
       if (_selectedTypeFilters.isNotEmpty) {
         filtered = filtered.where((pokemon) {
-          return pokemon.types.any((type) => _selectedTypeFilters.contains(type));
+          return pokemon.types.any(
+            (type) => _selectedTypeFilters.contains(type),
+          );
         }).toList();
       }
 
@@ -170,7 +175,10 @@ class _PokedexWidgetState extends State<PokedexWidget> {
         ),
         if (_selectedTypeFilters.isNotEmpty)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

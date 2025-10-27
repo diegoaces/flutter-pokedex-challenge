@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:poke_app/widgets/pokedex_widget.dart';
+import 'package:poke_app/presentation/widgets/pokedex_widget.dart';
 import 'package:poke_app/providers/pokemon_provider.dart';
-import 'package:poke_app/widgets/custom_bottom_navigation.dart';
-import 'package:poke_app/widgets/error_widget.dart';
-import 'package:poke_app/widgets/pokeball_loading.dart';
+import 'package:poke_app/presentation/widgets/custom_bottom_navigation.dart';
+import 'package:poke_app/presentation/widgets/error_widget.dart';
+import 'package:poke_app/presentation/widgets/pokeball_loading.dart';
 
 class PokedexScreen extends ConsumerWidget {
   const PokedexScreen({super.key});

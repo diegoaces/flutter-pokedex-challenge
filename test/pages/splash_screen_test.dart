@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:poke_app/pages/splash_screen.dart';
-import 'package:poke_app/widgets/pokeball_loading.dart';
+import 'package:poke_app/presentation/pages/splash_screen.dart';
+import 'package:poke_app/presentation/widgets/pokeball_loading.dart';
 
 void main() {
   Widget makeTestableWidget() {

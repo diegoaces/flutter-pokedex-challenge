@@ -1,5 +1,5 @@
 import 'package:poke_app/core/api_exception.dart';
-import 'package:poke_app/models/pokemon.dart';
+import 'package:poke_app/domain/entities/pokemon.dart';
 import 'package:poke_app/models/pokemon_list_response.dart';
 import 'package:poke_app/providers/dio_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

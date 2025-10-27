@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/widgets/custom_bottom_navigation.dart';
+import 'package:poke_app/presentation/widgets/custom_bottom_navigation.dart';
 
 class RegionesScreen extends StatelessWidget {
   const RegionesScreen({super.key});

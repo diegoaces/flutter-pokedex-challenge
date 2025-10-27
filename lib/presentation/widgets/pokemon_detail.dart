@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
-import 'package:poke_app/models/pokemon.dart';
-import 'package:poke_app/widgets/circle_clipper.dart';
-import 'package:poke_app/widgets/element_chip.dart';
-import 'package:poke_app/widgets/measurement_card.dart';
+import 'package:poke_app/domain/entities/pokemon.dart';
+import 'package:poke_app/presentation/widgets/circle_clipper.dart';
+import 'package:poke_app/presentation/widgets/element_chip.dart';
+import 'package:poke_app/presentation/widgets/measurement_card.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
-import 'package:poke_app/widgets/custom_bottom_navigation.dart';
+import 'package:poke_app/presentation/widgets/custom_bottom_navigation.dart';
 
 class PokemonDetail extends ConsumerStatefulWidget {
   const PokemonDetail({super.key, required this.pokemon});
@@ -175,7 +175,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.pokemon.nameCapitalizedFirstLetter(),
+                      widget.pokemon.displayName(),
                       style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -183,7 +183,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'N°${widget.pokemon.idWithLeadingZeros()}',
+                      'N°${widget.pokemon.displayNumber()}',
                       style: const TextStyle(fontSize: 20),
                     ),
                     Row(

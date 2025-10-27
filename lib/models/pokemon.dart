@@ -16,11 +16,5 @@ abstract class Pokemon with _$Pokemon {
   factory Pokemon.fromJson(Map<String, dynamic> json) =>
       _$PokemonFromJson(json);
 
-  String nameCapitalizedFirstLetter() {
-    if (name.isEmpty) return name;
-    return '${name[0].toUpperCase()}${name.substring(1)}';
-  }
-  String idWithLeadingZeros() {
-    return id.toString().padLeft(3, '0');
-  }
+  
 }
