@@ -59,7 +59,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: TextStyle(
                     fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -69,7 +68,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: TextStyle(
                     fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -84,7 +82,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 style: TextStyle(
                   fontSize: AppConstants.subtitleFontSize,
                   fontWeight: FontWeight.w400,
-                  fontFamily: AppConstants.fontFamily,
                   color: textSecondary,
                 ),
                 textAlign: TextAlign.center,
@@ -141,14 +138,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         elevation: 2,
                       ),
                       onPressed: () {
-                        // Navigate to the next page or perform an action
                         setState(() {
                           if (currentStep < onboardingSteps.length - 1) {
                             currentStep++;
                           } else {
-                            // Final step action
-                            // For example, navigate to home screen with goRouter
-                            context.go('/home');
+                            context.go('/pokedex');
                           }
                         });
                       },
@@ -160,7 +154,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         secondChild: Text(
@@ -169,7 +162,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         crossFadeState: currentStep == 0

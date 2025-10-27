@@ -139,6 +139,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let\'s Start'**
   String get letsStartButton;
+
+  /// Title shown when favorites list is empty
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t marked any \nPokémon as favorite'**
+  String get favoritesEmptyTitle;
+
+  /// Subtitle shown when favorites list is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Click on the heart icon of your \nfavorite Pokémon and they will appear here.'**
+  String get favoritesEmptySubtitle;
 }
 
 class _AppLocalizationsDelegate

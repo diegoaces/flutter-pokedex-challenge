@@ -159,6 +159,8 @@ test/.test_coverage.dart
 # Logs
 logs/
 *.log
+# Freezed files
+**/*.freezed.dart
 
 # Claude AI (optional - uncomment if you don't want to share)
 # .claude/

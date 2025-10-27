@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:poke_app/app_router.dart';
+import 'package:poke_app/core/app_theme.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
 
 void main() {
@@ -15,9 +16,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       title: 'PokeApp',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
       routerConfig: ref.watch(appRouterProvider),
       localizationsDelegates: const [

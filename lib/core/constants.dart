@@ -36,6 +36,4 @@ class AppConstants {
   static const String pokeball1Svg = 'assets/svg/pokeball1.svg';
   static const String pokeball2Svg = 'assets/svg/pokeball2.svg';
 
-  // Font family
-  static const String fontFamily = 'Poppins';
 }

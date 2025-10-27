@@ -43,10 +43,15 @@ dependencies:
   flutter_riverpod: ^3.0.3
   dio: ^5.9.0
   riverpod_annotation: ^3.0.3
+  google_fonts: ^6.3.2
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -58,6 +63,8 @@ dev_dependencies:
   build_runner: ^2.7.1
   riverpod_lint: ^3.0.3
   custom_lint: ^0.8.0
+  freezed: ^3.2.3
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -84,8 +91,22 @@ flutter:
     - assets/svg/globe.svg
     - assets/svg/home.svg
     - assets/svg/user.svg
+    # 
+    - assets/svg/fav.svg
+    - assets/svg/fav_solid.svg
+    - assets/svg/search.svg
+
+
+    # Elements
+    - assets/svg/grass.svg
+    - assets/svg/poison.svg
+    # Pokemons
     - assets/svg/magikarp.svg
     - assets/png/magikarp.png
+    - assets/png/pokemon1.png
+
+    # Screen 
+    - assets/png/regiones.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -26,14 +26,13 @@ class PokedexErrorWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
               ),
             ),
             const SizedBox(height: 8),
             const Text(
               'No pudimos cargar la información en este \nmomento. Verifica tu conexión o intenta nuevamente más tarde.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, fontFamily: 'Poppins'),
+              style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 16),
             Row(
@@ -62,7 +61,6 @@ class PokedexErrorWidget extends StatelessWidget {
                         fontSize: AppConstants.buttonFontSize,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
-                        fontFamily: AppConstants.fontFamily,
                       ),
                     ),
                   ),

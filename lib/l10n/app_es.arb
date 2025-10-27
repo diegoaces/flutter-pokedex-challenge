@@ -27,5 +27,13 @@
   "letsStartButton": "Empecemos",
   "@letsStartButton": {
     "description": "Texto del botón empecemos"
+  },
+  "favoritesEmptyTitle": "No has marcado ningún \nPokémon como favorito",
+  "@favoritesEmptyTitle": {
+    "description": "Título mostrado cuando la lista de favoritos está vacía"
+  },
+  "favoritesEmptySubtitle": "Haz clic en el ícono de corazón de tus \nPokémon favoritos y aparecerán aquí.",
+  "@favoritesEmptySubtitle": {
+    "description": "Subtítulo mostrado cuando la lista de favoritos está vacía"
   }
 }

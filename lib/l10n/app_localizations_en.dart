@@ -30,4 +30,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get letsStartButton => 'Let\'s Start';
+
+  @override
+  String get favoritesEmptyTitle =>
+      'You haven\'t marked any \nPokémon as favorite';
+
+  @override
+  String get favoritesEmptySubtitle =>
+      'Click on the heart icon of your \nfavorite Pokémon and they will appear here.';
 }
