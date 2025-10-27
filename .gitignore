@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -157,6 +159,8 @@ test/.test_coverage.dart
 # Logs
 logs/
 *.log
+# Freezed files
+**/*.freezed.dart
 
 # Claude AI (optional - uncomment if you don't want to share)
 # .claude/

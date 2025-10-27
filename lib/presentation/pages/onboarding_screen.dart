@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
 import 'package:poke_app/core/constants.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
@@ -58,7 +59,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: TextStyle(
                     fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -68,7 +68,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: TextStyle(
                     fontSize: AppConstants.titleFontSize,
                     fontWeight: FontWeight.w500,
-                    fontFamily: AppConstants.fontFamily,
                     color: textPrimary,
                   ),
                   textAlign: TextAlign.center,
@@ -83,7 +82,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 style: TextStyle(
                   fontSize: AppConstants.subtitleFontSize,
                   fontWeight: FontWeight.w400,
-                  fontFamily: AppConstants.fontFamily,
                   color: textSecondary,
                 ),
                 textAlign: TextAlign.center,
@@ -100,8 +98,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 0) ? azulNormal : azulSemiLight,
-                      borderRadius:
-                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.indicatorBorderRadius,
+                      ),
                     ),
                   ),
                   const SizedBox(width: AppConstants.indicatorSpacing),
@@ -113,8 +112,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: AppConstants.indicatorHeight.toDouble(),
                     decoration: BoxDecoration(
                       color: (currentStep == 1) ? azulNormal : azulSemiLight,
-                      borderRadius:
-                          BorderRadius.circular(AppConstants.indicatorBorderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.indicatorBorderRadius,
+                      ),
                     ),
                   ),
                 ],
@@ -130,19 +130,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           vertical: 15,
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(AppConstants.defaultBorderRadius),
+                          borderRadius: BorderRadius.circular(
+                            AppConstants.defaultBorderRadius,
+                          ),
                         ),
                         backgroundColor: primaryDefault,
                         elevation: 2,
                       ),
                       onPressed: () {
-                        // Navigate to the next page or perform an action
                         setState(() {
                           if (currentStep < onboardingSteps.length - 1) {
                             currentStep++;
                           } else {
-                            currentStep = 0;
+                            context.go('/pokedex');
                           }
                         });
                       },
@@ -154,7 +154,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         secondChild: Text(
@@ -163,7 +162,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: AppConstants.buttonFontSize,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontFamily: AppConstants.fontFamily,
                           ),
                         ),
                         crossFadeState: currentStep == 0

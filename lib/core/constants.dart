@@ -2,6 +2,10 @@
 class AppConstants {
   AppConstants._(); // Private constructor to prevent instantiation
 
+  // API constants
+  static const String apiBaseUrl = 'https://pokeapi.co/api/v2/';
+  static const Duration apiTimeout = Duration(seconds: 30);
+
   // Timing constants
   static const Duration splashScreenDuration = Duration(seconds: 2);
   static const Duration animationDuration = Duration(milliseconds: 300);
@@ -31,7 +35,4 @@ class AppConstants {
   static const String pokeballSvg = 'assets/svg/pokeball.svg';
   static const String pokeball1Svg = 'assets/svg/pokeball1.svg';
   static const String pokeball2Svg = 'assets/svg/pokeball2.svg';
-
-  // Font family
-  static const String fontFamily = 'Poppins';
 }
