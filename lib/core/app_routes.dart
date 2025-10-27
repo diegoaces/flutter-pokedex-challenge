@@ -6,4 +6,7 @@ class AppRoutes {
   static const String regiones = '/regiones';
   static const String favoritos = '/favoritos';
   static const String profile = '/profile';
+  static const String pokemonDetail = '/pokemon/:id';
+
+  static String pokemonDetailPath(int id) => '/pokemon/$id';
 }

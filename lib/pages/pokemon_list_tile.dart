@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:poke_app/colors.dart';
+import 'package:poke_app/core/app_routes.dart';
 import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/element_chip.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
@@ -14,7 +16,11 @@ class PokemonListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isFavorite = ref.watch(isFavoriteProvider(pokemon.id));
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        context.push(AppRoutes.pokemonDetailPath(pokemon.id), extra: pokemon);
+      },
+      child: Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
 
       decoration: BoxDecoration(
@@ -154,7 +160,8 @@ class PokemonListTile extends ConsumerWidget {
           ),
         ],
       ),
-    );
+    ),
+   );
   }
 }
 

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poke_app/core/app_routes.dart';
+import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/favorites_screen.dart';
 import 'package:poke_app/pages/pokedex_screen.dart';
 import 'package:poke_app/pages/onboarding_screen.dart';
+import 'package:poke_app/pages/pokemon_detail.dart';
 import 'package:poke_app/pages/profile_screen.dart';
 import 'package:poke_app/pages/regiones_screen.dart';
 import 'package:poke_app/pages/splash_screen.dart';
@@ -20,6 +22,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       _fadeRoute(path: AppRoutes.regiones, child: const RegionesScreen()),
       _fadeRoute(path: AppRoutes.favoritos, child: const FavoritesScreen()),
       _fadeRoute(path: AppRoutes.profile, child: const ProfileScreen()),
+      GoRoute(
+        path: AppRoutes.pokemonDetail,
+        pageBuilder: (context, state) {
+          final pokemon = state.extra as Pokemon;
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: PokemonDetail(pokemon: pokemon),
+            transitionsBuilder: (context, animation, secondary, child) =>
+                FadeTransition(opacity: animation, child: child),
+          );
+        },
+      ),
     ],
     redirect: (context, state) {
       final appStartupState = ref.watch(appStartupProvider);
