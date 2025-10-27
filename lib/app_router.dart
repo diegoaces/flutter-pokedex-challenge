@@ -6,7 +6,7 @@ import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/pages/favorites_screen.dart';
 import 'package:poke_app/pages/pokedex_screen.dart';
 import 'package:poke_app/pages/onboarding_screen.dart';
-import 'package:poke_app/pages/pokemon_detail.dart';
+import 'package:poke_app/widgets/pokemon_detail.dart';
 import 'package:poke_app/pages/profile_screen.dart';
 import 'package:poke_app/pages/regiones_screen.dart';
 import 'package:poke_app/pages/splash_screen.dart';

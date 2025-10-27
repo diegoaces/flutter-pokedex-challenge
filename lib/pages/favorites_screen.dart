@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
-import 'package:poke_app/pages/pokemon_list_tile.dart';
+import 'package:poke_app/widgets/pokemon_list_tile.dart';
 import 'package:poke_app/providers/favorites_provider.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 

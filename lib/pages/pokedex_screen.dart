@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:poke_app/pages/pokedex_widget.dart';
+import 'package:poke_app/widgets/pokedex_widget.dart';
 import 'package:poke_app/providers/pokemon_provider.dart';
 import 'package:poke_app/widgets/custom_bottom_navigation.dart';
 import 'package:poke_app/widgets/error_widget.dart';
