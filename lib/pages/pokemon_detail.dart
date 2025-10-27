@@ -203,17 +203,21 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                     const SizedBox(height: 12),
                     Divider(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
-                        MeasurementCard(
-                          assetName: 'assets/svg/weight-hanging.svg',
-                          label: 'PESO',
-                          value: '6,9 kg',
+                        Expanded(
+                          child: MeasurementCard(
+                            assetName: 'assets/svg/weight-hanging.svg',
+                            label: 'PESO',
+                            value: '6,9 kg',
+                          ),
                         ),
-                        MeasurementCard(
-                          assetName: 'assets/svg/column-height-outlined.svg',
-                          label: 'ALTURA',
-                          value: '0,7 m',
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: MeasurementCard(
+                            assetName: 'assets/svg/column-height-outlined.svg',
+                            label: 'ALTURA',
+                            value: '0,7 m',
+                          ),
                         ),
                       ],
                     ),
@@ -225,6 +229,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                           label: 'CATEGORÍA',
                           value: 'SEMILLA',
                         ),
+                        SizedBox(width: 16),
                         MeasurementCard(
                           assetName: 'assets/svg/pokeball_2.svg',
                           label: 'HABILIDAD',
@@ -234,7 +239,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'Fortalezas y Debilidades',
+                      'Debilidades',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -261,6 +266,7 @@ class _PokemonDetailState extends ConsumerState<PokemonDetail>
                         ),
                       ],
                     ),
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

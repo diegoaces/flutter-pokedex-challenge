@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:poke_app/colors.dart';
 import 'package:poke_app/core/app_routes.dart';
 import 'package:poke_app/core/pokemon_type_helper.dart';
 import 'package:poke_app/models/pokemon.dart';
