@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'PokeApp'**
+  /// **'Pokedex App'**
   String get appTitle;
 
   /// Title of the first onboarding step

@@ -9,7 +9,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get appTitle => 'PokeApp';
+  String get appTitle => 'Pokedex App';
 
   @override
   String get onboardingTitle1 => 'Todos los Pokémon en \n un solo lugar';
